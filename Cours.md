@@ -244,7 +244,78 @@ console.log('Hello', 'toi') // Hello toi
 ### 4. Les boucles
 
 Il existe deux type de boucle :
-Les boucles Pour, et les boucles Tant que
+Les boucles Tant que, et les boucles Pour.
+
+Petit exemple pour comprendre la différence :
+Si un politique dit "**Pour** 150 Millions de chomeurs, je vais créer 150 Millions d'emplois". La limite est bien définie, c'est comme une boucle qui va s'effectuer 150 Millions de fois, et qui va à chaque fois créer un emplois. La boucle à une fin.
+Si un politique dit "**Tant** qu'il y aura des chomeurs, je vais créer des emplois". La boucle peut s'effectuer à l'infini, car la limite n'est pas définie.
+
+Les boucles Tant que :
+```js
+while (/*condition*/) {
+  // Code de la boucle
+}
+
+while (true) {
+  console.log('Bonjour')
+}
+// Résultat
+/*
+Bonjour
+Bonjour
+Bonjour
+...
+Jusqu'à l'infini, car true ne changera jamais
+*/
+let i = 5;
+let j = 2;
+// Tant que j est supérieur à 0
+while (j > 0) {
+  if (i > j) {
+    i -= j
+  } else {
+    j -= i
+  }
+  console.log('i : ${i}\nj : ${j}\n')
+}
+// Résultat
+/*
+i : 3
+j : 2
+
+i : 1
+j : 2
+
+i : 1
+j : 1
+
+i : 1
+j : 0
+*/
+// j n'est plus supérieur à 0
+```
+
+Les boucles Pour
+```js
+for (/*'variable de départ'*/; /*'condition de fonctionnement'*/; /*'expression de fin de boucle'*/) {
+  // Code de la boucle
+}
+// Pour...
+// i est la variable de départ
+// Il faut que i soit inférieur à 5
+// On incrémente i à la fin de la boucle
+for (let i = 0; i < 5; i++) {
+  console.log(i)
+}
+// Résultat :
+/*
+0
+1
+2
+3
+4
+*/
+```
 
 J'ai pas finis
 
