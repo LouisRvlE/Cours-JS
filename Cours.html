@@ -380,7 +380,7 @@ code {
 }
 
 </style>
-<link rel="stylesheet" href="file:///c%3A/Users/louis/Documents/prog/ELIZO/Cours%20JS/style.css" type="text/css">
+<link rel="stylesheet" href="file:///c%3A/Users/louis/Documents/prog/Cours%20JS/style.css" type="text/css">
 <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
 </head>
 <body>
@@ -578,7 +578,73 @@ Il est possible de faire des opérations dans la fonction :</p>
 </div></code></pre>
 <h3 id="4-les-boucles">4. Les boucles</h3>
 <p>Il existe deux type de boucle :<br>
-Les boucles Pour, et les boucles Tant que</p>
+Les boucles Tant que, et les boucles Pour.</p>
+<p>Petit exemple pour comprendre la différence :<br>
+Si un politique dit &quot;<strong>Pour</strong> 150 Millions de chomeurs, je vais créer 150 Millions d'emplois&quot;. La limite est bien définie, c'est comme une boucle qui va s'effectuer 150 Millions de fois, et qui va à chaque fois créer un emplois. La boucle à une fin.<br>
+Si un politique dit &quot;<strong>Tant</strong> qu'il y aura des chomeurs, je vais créer des emplois&quot;. La boucle peut s'effectuer à l'infini, car la limite n'est pas définie.</p>
+<p>Les boucles Tant que :</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">while</span> (<span class="hljs-comment">/*condition*/</span>) {
+  <span class="hljs-comment">// Code de la boucle</span>
+}
+
+<span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Bonjour'</span>)
+}
+<span class="hljs-comment">// Résultat</span>
+<span class="hljs-comment">/*
+Bonjour
+Bonjour
+Bonjour
+...
+Jusqu'à l'infini, car true ne changera jamais
+*/</span>
+<span class="hljs-keyword">let</span> i = <span class="hljs-number">5</span>;
+<span class="hljs-keyword">let</span> j = <span class="hljs-number">2</span>;
+<span class="hljs-comment">// Tant que j est supérieur à 0</span>
+<span class="hljs-keyword">while</span> (j &gt; <span class="hljs-number">0</span>) {
+  <span class="hljs-keyword">if</span> (i &gt; j) {
+    i -= j
+  } <span class="hljs-keyword">else</span> {
+    j -= i
+  }
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'i : ${i}\nj : ${j}\n'</span>)
+}
+<span class="hljs-comment">// Résultat</span>
+<span class="hljs-comment">/*
+i : 3
+j : 2
+
+i : 1
+j : 2
+
+i : 1
+j : 1
+
+i : 1
+j : 0
+*/</span>
+<span class="hljs-comment">// j n'est plus supérieur à 0</span>
+</div></code></pre>
+<p>Les boucles Pour</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">for</span> (<span class="hljs-comment">/*'variable de départ'*/</span>; <span class="hljs-comment">/*'condition de fonctionnement'*/</span>; <span class="hljs-comment">/*'expression de fin de boucle'*/</span>) {
+  <span class="hljs-comment">// Code de la boucle</span>
+}
+<span class="hljs-comment">// Pour...</span>
+<span class="hljs-comment">// i est la variable de départ</span>
+<span class="hljs-comment">// Il faut que i soit inférieur à 5</span>
+<span class="hljs-comment">// On incrémente i à la fin de la boucle</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) {
+  <span class="hljs-built_in">console</span>.log(i)
+}
+<span class="hljs-comment">// Résultat :</span>
+<span class="hljs-comment">/*
+0
+1
+2
+3
+4
+*/</span>
+</div></code></pre>
 <p>J'ai pas finis</p>
 <h3 id="5-les-fonctions">5. Les fonctions</h3>
 
