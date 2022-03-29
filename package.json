@@ -1,0 +1,20 @@
+{
+  "name": "cours-js",
+  "version": "1.0.0",
+  "description": "\"# Cours-JS\"",
+  "main": "main.js",
+  "scripts": {
+    "up": "git add * && git commit -m '-' && git push",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LouisRvlE/Cours-JS.git"
+  },
+  "author": "LouisRvlE",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LouisRvlE/Cours-JS/issues"
+  },
+  "homepage": "https://github.com/LouisRvlE/Cours-JS#readme"
+}

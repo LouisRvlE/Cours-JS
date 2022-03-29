@@ -1,9 +1,10 @@
 # JavaScript Vanilla
 ## Les 5 bases de l'algorithmie, appliquées au JS
 
+
 ### 1. Les variables
 
-Assigniations des variables :
+#### Assigniations des variables
 
 Pour créer une variable, il faut l'instancier avec une des trois instructions : ``var``, ``let`` ou ``const``.
 ```js
@@ -80,7 +81,7 @@ let pommeDeTerre;
 ``` 
 Contre-exemple : Les composants en React ont des noms qui commencent par des majuscules. 
 
-a. Les chaînes de caratère
+#### a. Les chaînes de caratère
 
 Une chaîne de caractères et simplement une suite de caractères, entourés de doubles quotes et de simple quote (``' '`` ou ``" "``).
 ```js
@@ -107,7 +108,7 @@ console.log(chaine1 + chaine2 + chaine3 + "fin")
 
 Il n'est pas contre évidement pas possible de multiplier, soustraire ou diviser une chaine de caractères.
 
-b. Les chiffres
+#### b. Les chiffres
 
 ```js
 // Un entier
@@ -135,7 +136,7 @@ Il est aussi possible d'additionner un chiffre et une chaine de caractère :
 let a = 'Hello' + 12 // Hello12
 ```
 
-c. Les booléens
+ #### c. Les booléens
 
 Il n'existe que deux valeurs possibles pour un booléen
 ```js
@@ -161,7 +162,7 @@ let bool5 = bool || bool2 // => vrai
 let bool6 = (false && true) || (bool3 || (bool2 && true)) // => vrai
 ```
 
-d. Les listes
+#### d. Les listes
 
 Les listes sont des objets à indexage numérique, nommé plus communément array qui peuvent contenir tout type de donnée.
 ```js
@@ -173,7 +174,7 @@ console.log(liste[3]) // = [3, 'Non', false]
 console.log(liste[3][1]) // = Non
 ```
 
-e. Les dictionnaires
+#### e. Les dictionnaires
 
 Les dictionnaires sont comme les listes, mais leur indexage est libre : ce peut être une chaîne de caractère, un chiffre, ou même un booléen.
 ```js
@@ -204,7 +205,7 @@ console.log(dict.hello)
 
 Je reparlerai des élements hérités quand je parlerais des fonctions.
 
-f. Les données nulles.
+#### f. Les données nulles.
 
 ```js
 let a = null
@@ -213,13 +214,18 @@ let b2; // undefined
 let c = NaN // Not a number
 ```
 
-### 2. La lecture
+### 2. Les conditions
+
+Super partie sur les conditions à effectuer
+
+
+### 3. La lecture
 
 La lecture est l'entrée utilisateur.
 Dans le cas du JavaScript Vanilla, la lecture se fait à proprement parlé dans le navigateur.
 Il n'est pas nécessaire de faire une partie entière sur ce point.
 
-### 3. L'écriture
+### 4. L'écriture
 
 L'écriture est ce qui sort de l'algorithme.
 Il y a deux moyen d'écrire dans la console :
@@ -229,19 +235,120 @@ process.stdout.write('Bonsoir')
 ```
 
 On parle depuis le début de ``console.log``, mais c'est intéressant de savoir qu'il existe un autre moyen d'écrire dans la console.
-Voici un lien pour comprendre les différences entre les deux : (lien)[https://www.geeksforgeeks.org/difference-between-process-stdout-write-and-console-log-in-node-js/]
+Voici un lien pour comprendre les différences entre les deux : [Difference between process.stdout.write and console.log in Node.js](https://www.geeksforgeeks.org/difference-between-process-stdout-write-and-console-log-in-node-js/)
 
 Pour rester avec le plus courant, et celui que vous allez le plus utiliser, parlons un peu plus de ``console.log()``.
 Il est possible de faire des opérations dans la fonction :
 ```js
 console.log(12+4) // 16
-console.log(12+4) // 16
 ```
 On peut mettre plusieurs arguments :
 ```js
-console.log('Hello', 'toi') // Hello toi
+console.log('Hello', 'toi', [1, 4, 5]) // Hello toi [1, 4, 5]
 ```
-### 4. Les boucles
+Ils seront compris comme des élements à imprimer les un à la suite des autres dans la console, sans saut à la ligne (\n) mais avec un espace.
+
+Voici d'autres méthodes de la console utiles à connaître :
+La méthode `console.count(<label>)`.
+Elle affiche le nombre de fois que la ligne a été appelée avec un label donné.
+```js
+console.count('Testing')
+console.count('Testing')
+console.count('Testing')
+// Résultat avec le label Testing
+/*
+Testing: 1
+Testing: 2
+Testing: 3
+*/
+```
+
+La méthode `console.table(<liste|dictionnaire>)`.
+Affiche les données d'une liste ou d'un dictionnaire sous forme de tableau.
+```js
+console.table([['Paul', 'Marc', 'Dominique'], [19, 67, 69]])
+console.table({
+    Marc:{
+        age:39,
+        profession:'Professeur',
+        list:['p', 'a', 124],
+        exemple:{
+            one:1,
+            two:2
+        }
+    },
+    Dominique:{
+        age:52,
+        profession:'Technicien',
+        list:['o', 'q', 19],
+        exemple:{
+            one:3,
+            two:4
+        }
+    }
+})
+// Résultat
+/*
+┌─────────┬────────┬────────┬─────────────┐
+│ (index) │   0    │   1    │      2      │
+├─────────┼────────┼────────┼─────────────┤
+│    0    │ 'Paul' │ 'Marc' │ 'Dominique' │
+│    1    │   19   │   67   │     69      │
+└─────────┴────────┴────────┴─────────────┘
+┌───────────┬─────┬──────────────┬───────────────────┬────────────────────┐
+│  (index)  │ age │  profession  │       list        │      exemple       │
+├───────────┼─────┼──────────────┼───────────────────┼────────────────────┤
+│   Marc    │ 39  │ 'Professeur' │ [ 'p', 'a', 124 ] │ { one: 1, two: 2 } │
+│ Dominique │ 52  │ 'Technicien' │ [ 'o', 'q', 19 ]  │ { one: 3, two: 4 } │
+└───────────┴─────┴──────────────┴───────────────────┴────────────────────┘
+*/
+// Attention ! Les listes ou dictionnaires imbriquées ne s'affichent pas sous la forme d'un tableau
+```
+
+La méthode `console.group()` crée un nouveau groupe en ligne, correspondant à un nouveau niveau d'indentation.
+`console.groupEnd()` referme ce groupe.
+`console.groupCollapsed()` crée un groupe qiu se referme (avec un bouton pour ouvrir/fermer le bloc). Cette méthode ne fait rien dans le terminal de l'ordinateur, il ne fonctionne que dans le navigateur.
+```js
+console.log('1')
+console.group()
+console.log('2')
+console.groupCollapsed()
+console.log('3')
+console.groupEnd()
+console.log('4')
+console.groupEnd()
+console.log('5')
+// Résultat
+/*
+1
+  2
+    3
+  4
+5
+*/
+```
+
+Et une dernière méthode, celle-ci utilisé pour connaitre l'efficatité du code.
+La méthode `console.time(<label>)` démarre un nouveau chronomètre, qui d'arrêtera avec la méthode `console.timeEnd(<label>)`.
+```js
+console.time('Timeur')
+let cpt = 13*32
+cpt -= 12
+cpt *= 13
+cpt += 12
+console.log(cpt)
+console.timeEnd('Timeur')
+// Résultat avec le label Timeur
+/*
+5264
+Timeur: 13.44ms
+*/
+```
+
+Pour voir toutes les méthodes inhérentes à la console, n'hésiter pas à consulter [la documentation](https://developer.mozilla.org/fr/docs/Web/API/Console)
+
+
+### 5. Les boucles
 
 Il existe deux type de boucle :
 Les boucles Tant que, et les boucles Pour.
@@ -319,4 +426,4 @@ for (let i = 0; i < 5; i++) {
 
 J'ai pas finis
 
-### 5. Les fonctions
+### 6. Les fonctions

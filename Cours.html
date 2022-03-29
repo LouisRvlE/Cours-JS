@@ -380,7 +380,7 @@ code {
 }
 
 </style>
-<link rel="stylesheet" href="file:///c%3A/Users/louis/Documents/prog/Cours%20JS/style.css" type="text/css">
+<link rel="stylesheet" href="file:///c%3A/Users/louis/Documents/prog/Cours%20JS/.style.css" type="text/css">
 <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
 </head>
 <body>
@@ -455,7 +455,7 @@ Dans le cas du développemment web, l'algorithme ne s'execute pas de manière s�
 <pre class="hljs"><code><div><span class="hljs-keyword">let</span> pommeDeTerre;
 </div></code></pre>
 <p>Contre-exemple : Les composants en React ont des noms qui commencent par des majuscules.</p>
-<p>a. Les chaînes de caratère</p>
+<h5 id="a-les-cha%C3%AEnes-de-carat%C3%A8re">a. Les chaînes de caratère</h5>
 <p>Une chaîne de caractères et simplement une suite de caractères, entourés de doubles quotes et de simple quote (<code>' '</code> ou <code>&quot; &quot;</code>).</p>
 <pre class="hljs"><code><div><span class="hljs-keyword">let</span> chaine1 = <span class="hljs-string">'Exemple 1'</span>
 <span class="hljs-keyword">let</span> chaine2 = <span class="hljs-string">"Exemple 2"</span>
@@ -474,7 +474,7 @@ Il faut utiliser un contre-slash <code>\</code> :</p>
 <span class="hljs-comment">// = Exemple 1Exemple 2Exemple 1 Exemple 2fin</span>
 </div></code></pre>
 <p>Il n'est pas contre évidement pas possible de multiplier, soustraire ou diviser une chaine de caractères.</p>
-<p>b. Les chiffres</p>
+<h5 id="b-les-chiffres">b. Les chiffres</h5>
 <pre class="hljs"><code><div><span class="hljs-comment">// Un entier</span>
 <span class="hljs-keyword">let</span> chiffre = <span class="hljs-number">15</span>
 <span class="hljs-comment">// Un nombre à virgule</span>
@@ -497,7 +497,7 @@ a += <span class="hljs-string">' à toi'</span>
 <p>Il est aussi possible d'additionner un chiffre et une chaine de caractère :</p>
 <pre class="hljs"><code><div><span class="hljs-keyword">let</span> a = <span class="hljs-string">'Hello'</span> + <span class="hljs-number">12</span> <span class="hljs-comment">// Hello12</span>
 </div></code></pre>
-<p>c. Les booléens</p>
+<h5 id="c-les-bool%C3%A9ens">c. Les booléens</h5>
 <p>Il n'existe que deux valeurs possibles pour un booléen</p>
 <pre class="hljs"><code><div><span class="hljs-keyword">let</span> bool = <span class="hljs-literal">true</span>
 <span class="hljs-keyword">let</span> bool2 = <span class="hljs-literal">false</span>
@@ -516,7 +516,7 @@ a += <span class="hljs-string">' à toi'</span>
 <span class="hljs-keyword">let</span> bool5 = bool || bool2 <span class="hljs-comment">// =&gt; vrai</span>
 <span class="hljs-keyword">let</span> bool6 = (<span class="hljs-literal">false</span> &amp;&amp; <span class="hljs-literal">true</span>) || (bool3 || (bool2 &amp;&amp; <span class="hljs-literal">true</span>)) <span class="hljs-comment">// =&gt; vrai</span>
 </div></code></pre>
-<p>d. Les listes</p>
+<h5 id="d-les-listes">d. Les listes</h5>
 <p>Les listes sont des objets à indexage numérique, nommé plus communément array qui peuvent contenir tout type de donnée.</p>
 <pre class="hljs"><code><div><span class="hljs-keyword">let</span> liste = [<span class="hljs-string">'Oui'</span>, <span class="hljs-number">14</span>, <span class="hljs-literal">true</span>, [<span class="hljs-number">3</span>, <span class="hljs-string">'Non'</span>, <span class="hljs-literal">false</span>]]
 <span class="hljs-comment">// Pour accéder à un élement de la liste, il faut référencier son index en commençant par 0</span>
@@ -525,7 +525,7 @@ a += <span class="hljs-string">' à toi'</span>
 <span class="hljs-built_in">console</span>.log(liste[<span class="hljs-number">3</span>]) <span class="hljs-comment">// = [3, 'Non', false]</span>
 <span class="hljs-built_in">console</span>.log(liste[<span class="hljs-number">3</span>][<span class="hljs-number">1</span>]) <span class="hljs-comment">// = Non</span>
 </div></code></pre>
-<p>e. Les dictionnaires</p>
+<h5 id="e-les-dictionnaires">e. Les dictionnaires</h5>
 <p>Les dictionnaires sont comme les listes, mais leur indexage est libre : ce peut être une chaîne de caractère, un chiffre, ou même un booléen.</p>
 <pre class="hljs"><code><div><span class="hljs-comment">// L'indexage peut être noté sans quotes quand la chaîne de caractère n'a pas de d'espace</span>
 <span class="hljs-keyword">let</span> dict = {
@@ -550,33 +550,125 @@ a += <span class="hljs-string">' à toi'</span>
 <span class="hljs-built_in">console</span>.log(dict.hello)
 </div></code></pre>
 <p>Je reparlerai des élements hérités quand je parlerais des fonctions.</p>
-<p>f. Les données nulles.</p>
+<h5 id="f-les-donn%C3%A9es-nulles">f. Les données nulles.</h5>
 <pre class="hljs"><code><div><span class="hljs-keyword">let</span> a = <span class="hljs-literal">null</span>
 <span class="hljs-keyword">let</span> b = <span class="hljs-literal">undefined</span>
 <span class="hljs-keyword">let</span> b2; <span class="hljs-comment">// undefined</span>
 <span class="hljs-keyword">let</span> c = <span class="hljs-literal">NaN</span> <span class="hljs-comment">// Not a number</span>
 </div></code></pre>
-<h3 id="2-la-lecture">2. La lecture</h3>
+<h3 id="2-les-conditions">2. Les conditions</h3>
+<p>Super partie sur les conditions à effectuer</p>
+<h3 id="3-la-lecture">3. La lecture</h3>
 <p>La lecture est l'entrée utilisateur.<br>
 Dans le cas du JavaScript Vanilla, la lecture se fait à proprement parlé dans le navigateur.<br>
 Il n'est pas nécessaire de faire une partie entière sur ce point.</p>
-<h3 id="3-l%C3%A9criture">3. L'écriture</h3>
+<h3 id="4-l%C3%A9criture">4. L'écriture</h3>
 <p>L'écriture est ce qui sort de l'algorithme.<br>
 Il y a deux moyen d'écrire dans la console :</p>
 <pre class="hljs"><code><div><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Bonjour'</span>)
 process.stdout.write(<span class="hljs-string">'Bonsoir'</span>)
 </div></code></pre>
 <p>On parle depuis le début de <code>console.log</code>, mais c'est intéressant de savoir qu'il existe un autre moyen d'écrire dans la console.<br>
-Voici un lien pour comprendre les différences entre les deux : (lien)[https://www.geeksforgeeks.org/difference-between-process-stdout-write-and-console-log-in-node-js/]</p>
+Voici un lien pour comprendre les différences entre les deux : <a href="https://www.geeksforgeeks.org/difference-between-process-stdout-write-and-console-log-in-node-js/">Difference between process.stdout.write and console.log in Node.js</a></p>
 <p>Pour rester avec le plus courant, et celui que vous allez le plus utiliser, parlons un peu plus de <code>console.log()</code>.<br>
 Il est possible de faire des opérations dans la fonction :</p>
 <pre class="hljs"><code><div><span class="hljs-built_in">console</span>.log(<span class="hljs-number">12</span>+<span class="hljs-number">4</span>) <span class="hljs-comment">// 16</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-number">12</span>+<span class="hljs-number">4</span>) <span class="hljs-comment">// 16</span>
 </div></code></pre>
 <p>On peut mettre plusieurs arguments :</p>
-<pre class="hljs"><code><div><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Hello'</span>, <span class="hljs-string">'toi'</span>) <span class="hljs-comment">// Hello toi</span>
+<pre class="hljs"><code><div><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Hello'</span>, <span class="hljs-string">'toi'</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]) <span class="hljs-comment">// Hello toi [1, 4, 5]</span>
 </div></code></pre>
-<h3 id="4-les-boucles">4. Les boucles</h3>
+<p>Ils seront compris comme des élements à imprimer les un à la suite des autres dans la console, sans saut à la ligne (\n) mais avec un espace.</p>
+<p>Voici d'autres méthodes de la console utiles à connaître :<br>
+La méthode <code>console.count(&lt;label&gt;)</code>.<br>
+Elle affiche le nombre de fois que la ligne a été appelée avec un label donné.</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">console</span>.count(<span class="hljs-string">'Testing'</span>)
+<span class="hljs-built_in">console</span>.count(<span class="hljs-string">'Testing'</span>)
+<span class="hljs-built_in">console</span>.count(<span class="hljs-string">'Testing'</span>)
+<span class="hljs-comment">// Résultat avec le label Testing</span>
+<span class="hljs-comment">/*
+Testing: 1
+Testing: 2
+Testing: 3
+*/</span>
+</div></code></pre>
+<p>La méthode <code>console.table(&lt;liste|dictionnaire&gt;)</code>.<br>
+Affiche les données d'une liste ou d'un dictionnaire sous forme de tableau.</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">console</span>.table([[<span class="hljs-string">'Paul'</span>, <span class="hljs-string">'Marc'</span>, <span class="hljs-string">'Dominique'</span>], [<span class="hljs-number">19</span>, <span class="hljs-number">67</span>, <span class="hljs-number">69</span>]])
+<span class="hljs-built_in">console</span>.table({
+    <span class="hljs-attr">Marc</span>:{
+        <span class="hljs-attr">age</span>:<span class="hljs-number">39</span>,
+        <span class="hljs-attr">profession</span>:<span class="hljs-string">'Professeur'</span>,
+        <span class="hljs-attr">list</span>:[<span class="hljs-string">'p'</span>, <span class="hljs-string">'a'</span>, <span class="hljs-number">124</span>],
+        <span class="hljs-attr">exemple</span>:{
+            <span class="hljs-attr">one</span>:<span class="hljs-number">1</span>,
+            <span class="hljs-attr">two</span>:<span class="hljs-number">2</span>
+        }
+    },
+    <span class="hljs-attr">Dominique</span>:{
+        <span class="hljs-attr">age</span>:<span class="hljs-number">52</span>,
+        <span class="hljs-attr">profession</span>:<span class="hljs-string">'Technicien'</span>,
+        <span class="hljs-attr">list</span>:[<span class="hljs-string">'o'</span>, <span class="hljs-string">'q'</span>, <span class="hljs-number">19</span>],
+        <span class="hljs-attr">exemple</span>:{
+            <span class="hljs-attr">one</span>:<span class="hljs-number">3</span>,
+            <span class="hljs-attr">two</span>:<span class="hljs-number">4</span>
+        }
+    }
+})
+<span class="hljs-comment">// Résultat</span>
+<span class="hljs-comment">/*
+┌─────────┬────────┬────────┬─────────────┐
+│ (index) │   0    │   1    │      2      │
+├─────────┼────────┼────────┼─────────────┤
+│    0    │ 'Paul' │ 'Marc' │ 'Dominique' │
+│    1    │   19   │   67   │     69      │
+└─────────┴────────┴────────┴─────────────┘
+┌───────────┬─────┬──────────────┬───────────────────┬────────────────────┐
+│  (index)  │ age │  profession  │       list        │      exemple       │
+├───────────┼─────┼──────────────┼───────────────────┼────────────────────┤
+│   Marc    │ 39  │ 'Professeur' │ [ 'p', 'a', 124 ] │ { one: 1, two: 2 } │
+│ Dominique │ 52  │ 'Technicien' │ [ 'o', 'q', 19 ]  │ { one: 3, two: 4 } │
+└───────────┴─────┴──────────────┴───────────────────┴────────────────────┘
+*/</span>
+<span class="hljs-comment">// Attention ! Les listes ou dictionnaires imbriquées ne s'affichent pas sous la forme d'un tableau</span>
+</div></code></pre>
+<p>La méthode <code>console.group()</code> crée un nouveau groupe en ligne, correspondant à un nouveau niveau d'indentation.<br>
+<code>console.groupEnd()</code> referme ce groupe.<br>
+<code>console.groupCollapsed()</code> crée un groupe qiu se referme (avec un bouton pour ouvrir/fermer le bloc). Cette méthode ne fait rien dans le terminal de l'ordinateur, il ne fonctionne que dans le navigateur.</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'1'</span>)
+<span class="hljs-built_in">console</span>.group()
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'2'</span>)
+<span class="hljs-built_in">console</span>.groupCollapsed()
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'3'</span>)
+<span class="hljs-built_in">console</span>.groupEnd()
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'4'</span>)
+<span class="hljs-built_in">console</span>.groupEnd()
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'5'</span>)
+<span class="hljs-comment">// Résultat</span>
+<span class="hljs-comment">/*
+1
+  2
+    3
+  4
+5
+*/</span>
+</div></code></pre>
+<p>Et une dernière méthode, celle-ci utilisé pour connaitre l'efficatité du code.<br>
+La méthode <code>console.time(&lt;label&gt;)</code> démarre un nouveau chronomètre, qui d'arrêtera avec la méthode <code>console.timeEnd(&lt;label&gt;)</code>.</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">console</span>.time(<span class="hljs-string">'Timeur'</span>)
+<span class="hljs-keyword">let</span> cpt = <span class="hljs-number">13</span>*<span class="hljs-number">32</span>
+cpt -= <span class="hljs-number">12</span>
+cpt *= <span class="hljs-number">13</span>
+cpt += <span class="hljs-number">12</span>
+<span class="hljs-built_in">console</span>.log(cpt)
+<span class="hljs-built_in">console</span>.timeEnd(<span class="hljs-string">'Timeur'</span>)
+<span class="hljs-comment">// Résultat avec le label Timeur</span>
+<span class="hljs-comment">/*
+5264
+Timeur: 13.44ms
+*/</span>
+</div></code></pre>
+<p>Pour voir toutes les méthodes inhérentes à la console, n'hésiter pas à consulter <a href="https://developer.mozilla.org/fr/docs/Web/API/Console">la documentation</a></p>
+<h3 id="5-les-boucles">5. Les boucles</h3>
 <p>Il existe deux type de boucle :<br>
 Les boucles Tant que, et les boucles Pour.</p>
 <p>Petit exemple pour comprendre la différence :<br>
@@ -646,7 +738,7 @@ j : 0
 */</span>
 </div></code></pre>
 <p>J'ai pas finis</p>
-<h3 id="5-les-fonctions">5. Les fonctions</h3>
+<h3 id="6-les-fonctions">6. Les fonctions</h3>
 
 </body>
 </html>
