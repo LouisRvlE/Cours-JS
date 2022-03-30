@@ -1,6 +1,7 @@
 # JavaScript Vanilla
 ## Les 5 bases de l'algorithmie, appliquées au JS
 
+### Somaire
 
 ### 1. Les variables
 
@@ -219,13 +220,15 @@ let c = NaN // Not a number
 Super partie sur les conditions à effectuer
 
 
-### 3. La lecture
+### 3. La lecture et l'écriture
+
+#### La lecture
 
 La lecture est l'entrée utilisateur.
 Dans le cas du JavaScript Vanilla, la lecture se fait à proprement parlé dans le navigateur.
 Il n'est pas nécessaire de faire une partie entière sur ce point.
 
-### 4. L'écriture
+#### L'écriture
 
 L'écriture est ce qui sort de l'algorithme.
 Il y a deux moyen d'écrire dans la console :
@@ -348,7 +351,7 @@ Timeur: 13.44ms
 Pour voir toutes les méthodes inhérentes à la console, n'hésiter pas à consulter [la documentation](https://developer.mozilla.org/fr/docs/Web/API/Console)
 
 
-### 5. Les boucles
+### 4. Les boucles
 
 Il existe deux type de boucle :
 Les boucles Tant que, et les boucles Pour.
@@ -426,4 +429,4 @@ for (let i = 0; i < 5; i++) {
 
 J'ai pas finis
 
-### 6. Les fonctions
+### 5. Les fonctions
