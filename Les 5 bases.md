@@ -727,3 +727,19 @@ const dict = {
 dict.one() // oui
 dict.inner.func() // non
 ```
+
+Afin de finir sur les fonctions voici une liste de lien contenant toutes les méthodes des différents Objets standards :
+
+[String | Chaine de caractère](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String)
+
+[Array | Liste](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
+[Booléen | Vrai ou faux](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Boolean)
+
+[Date](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Date) : cet objet n'a pas été vu dans ce cours, mais voici des [>exemles<](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Date#exemples) sur la même page.
+
+[String | Chaine de caractère](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String)
+
+[String | Chaine de caractère](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String)
+
+[String | Chaine de caractère](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String)
