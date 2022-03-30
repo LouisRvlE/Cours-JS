@@ -2,23 +2,24 @@
 ## Les 5 bases de l'algorithmie, appliquées au JS
 
 ### Sommaire
-1) [Les variables](#1-les-variables-%E2%96%B2) <br>
+1) [Les variables](#1-les-variables) <br>
   a. [Assigniations des variables](#assigniations-des-variables) <br>
   b. [Les chiffres](#b-les-chiffres) <br>
   c. [Les booléens](#c-les-booléens) <br>
   d. [Les listes](#d-les-listes) <br>
   e. [Les dictionnaires](#e-les-dictionnaires) <br>
   f. [Les données nulles](#f-les-données-nulles) <br>
-2) [Les conditions ](#2-les-conditions-%E2%96%B2) <br>
-3) [La lecture et l'écriture](#3-la-lecture-et-lécriture-%E2%96%B2) <br>
+2) [Les conditions ](#2-les-conditions) <br>
+3) [La lecture et l'écriture](#3-la-lecture-et-lécriture) <br>
   [La lecture](#la-lecture) <br>
   [L'écriture](#lécriture) <br>
-4) [Les boucles](#4-les-boucles-%E2%96%B2) <br>
-5) [Les fonctions](#5-les-fonctions-%E2%96%B2) <br>
+4) [Les boucles](#4-les-boucles) <br>
+5) [Les fonctions](#5-les-fonctions) <br>
 
 Clique sur le bouton ▲ pour revenir au sommaire.
 
-### 1. Les variables [▲](#sommaire)
+### 1. Les variables
+[▲](#sommaire)
 
 
 #### Assigniations des variables
@@ -231,12 +232,14 @@ let b2; // undefined
 let c = NaN // Not a number
 ```
 
-### 2. Les conditions [▲](#sommaire)
+### 2. Les conditions
+[▲](#sommaire)
 
 Super partie sur les conditions à effectuer
 
 
-### 3. La lecture et l'écriture [▲](#sommaire)
+### 3. La lecture et l'écriture
+[▲](#sommaire)
 
 #### La lecture
 
@@ -367,7 +370,8 @@ Timeur: 13.44ms
 Pour voir toutes les méthodes inhérentes à la console, n'hésiter pas à consulter [la documentation](https://developer.mozilla.org/fr/docs/Web/API/Console)
 
 
-### 4. Les boucles [▲](#sommaire)
+### 4. Les boucles
+[▲](#sommaire)
 
 Il existe deux type de boucle :
 Les boucles Tant que, et les boucles Pour.
@@ -445,4 +449,5 @@ for (let i = 0; i < 5; i++) {
 
 J'ai pas finis
 
-### 5. Les fonctions [▲](#sommaire)
+### 5. Les fonctions
+[▲](#sommaire)
