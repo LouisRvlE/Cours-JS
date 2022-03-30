@@ -2,3 +2,23 @@
     color: #242c66;
     font-size: inherit;
 }
+
+a {
+    color: black;
+}
+
+a[href='#sommaire']:hover {
+    text-decoration: none;
+}
+
+a:active {
+    color: black;
+}
+
+a:focus {
+    outline: none;
+}
+
+a:visited {
+    color: black;
+}

@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Les 5 bases.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* a11y-dark theme */
+/* Based on the Tomorrow Night Eighties theme: https://github.com/isagalaev/highlight.js/blob/master/src/styles/tomorrow-night-eighties.css */
+/* @author: ericwbailey */
+
+/* Comment */
+.hljs-comment,
+.hljs-quote {
+  color: #d4d0ab;
+}
+
+/* Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+  color: #ffa07a;
+}
+
+/* Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+  color: #f5ab35;
+}
+
+/* Yellow */
+.hljs-attribute {
+  color: #ffd700;
+}
+
+/* Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+  color: #abe338;
+}
+
+/* Blue */
+.hljs-title,
+.hljs-section {
+  color: #00e0e0;
+}
+
+/* Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+  color: #dcc6e0;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  background: #2b2b2b;
+  color: #f8f8f2;
+  padding: 0.5em;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .hljs-addition,
+  .hljs-attribute,
+  .hljs-built_in,
+  .hljs-builtin-name,
+  .hljs-bullet,
+  .hljs-comment,
+  .hljs-link,
+  .hljs-literal,
+  .hljs-meta,
+  .hljs-number,
+  .hljs-params,
+  .hljs-string,
+  .hljs-symbol,
+  .hljs-type,
+  .hljs-quote {
+        color: highlight;
+    }
+
+    .hljs-keyword,
+    .hljs-selector-tag {
+        font-weight: bold;
+    }
+}
+
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///c%3A/Users/louis/Documents/prog/cours/.style.css" type="text/css">
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="javascript-vanilla">JavaScript Vanilla</h1>
+<h2 id="les-5-bases-de-lalgorithmie-appliqu%C3%A9es-au-js">Les 5 bases de l'algorithmie, appliquées au JS</h2>
+<h3 id="sommaire">Sommaire</h3>
+<ol>
+<li><a href="#1-les-variables-%E2%96%B2">Les variables</a> <br>
+a. <a href="#assigniations-des-variables">Assigniations des variables</a> <br>
+b. <a href="#b-les-chiffres">Les chiffres</a> <br>
+c. <a href="#c-les-bool%C3%A9ens">Les booléens</a> <br>
+d. <a href="#d-les-listes">Les listes</a> <br>
+e. <a href="#e-les-dictionnaires">Les dictionnaires</a> <br>
+f. <a href="#f-les-donn%C3%A9es-nulles">Les données nulles</a> <br></li>
+<li><a href="#2-les-conditions-%E2%96%B2">Les conditions </a> <br></li>
+<li><a href="#3-la-lecture-et-l%C3%A9criture-%E2%96%B2">La lecture et l'écriture</a> <br>
+<a href="#la-lecture">La lecture</a> <br>
+<a href="#l%C3%A9criture">L'écriture</a> <br></li>
+<li><a href="#4-les-boucles-%E2%96%B2">Les boucles</a> <br></li>
+<li><a href="#5-les-fonctions-%E2%96%B2">Les fonctions</a> <br></li>
+</ol>
+<p>Clique sur le bouton ▲ pour revenir au sommaire.</p>
+<h3 id="1-les-variables-%E2%96%B2">1. Les variables <a href="#sommaire">▲</a></h3>
+<h4 id="assigniations-des-variables">Assigniations des variables</h4>
+<p>Pour créer une variable, il faut l'instancier avec une des trois instructions : <code>var</code>, <code>let</code> ou <code>const</code>.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">var</span> variableGlobale = <span class="hljs-string">'exemple'</span>;
+<span class="hljs-keyword">let</span> variableCourante = <span class="hljs-string">'exemple'</span>;
+<span class="hljs-keyword">const</span> constanteGlobale = <span class="hljs-string">'exemple'</span>;
+</div></code></pre>
+<p>Pour modifier une variable, il ne faut pas réécrire cette instruction :</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">let</span> exemple = <span class="hljs-string">'Variable Super Chouette'</span>
+<span class="hljs-built_in">console</span>.log(exemple) <span class="hljs-comment">// = Variable Super Chouette</span>
+exemple = <span class="hljs-string">'Variable beaucoup moins chouette'</span>
+<span class="hljs-built_in">console</span>.log(exemple) <span class="hljs-comment">// Variable beaucoup moins chouette</span>
+</div></code></pre>
+<p>Ces trois instructions n'existent pas pour rien, il y a bien évidement des différences :
+L'instruction <code>let</code> permet de déclarer une variable dont la portée est celle du bloc courant. L'instruction <code>var</code> correspond à une variable globale, qui ne peut être ré-assginée. La variable pourra cependant être modifiée, contrairement à une constante, avec l'instruction <code>const</code>, qui est immuable.</p>
+<p>Exemple pour let :</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">let</span> x = <span class="hljs-number">1</span>;
+
+<span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>) {
+  <span class="hljs-keyword">let</span> x = <span class="hljs-number">2</span>;
+  <span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">// = 2</span>
+}
+
+<span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">// = 1</span>
+</div></code></pre>
+<p><code>x</code> a été réassginée avec l'instruction <code>let</code>. Dans le bloc <code>if</code>, <code>x</code> correspond à une autre variable que celle en dehors, c'est pour cette raison qu'à la dernière ligne, <code>x</code> reste inchangée.
+Sans let :</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">let</span> x = <span class="hljs-number">1</span>;
+
+<span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>) {
+  x = <span class="hljs-number">2</span>;
+  <span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">// = 2</span>
+}
+
+<span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">// = 2</span>
+</div></code></pre>
+<p>Dans ce cas, <code>x</code> n'a pas été redéfinis, donc il correspond à la même variable.</p>
+<p>A contrario, une variable initiée avec l'instruction <code>var</code> ne peut pas être réassignée :</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">var</span> x = <span class="hljs-number">1</span>;
+
+<span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>) {
+  <span class="hljs-keyword">var</span> x = <span class="hljs-number">2</span>; <span class="hljs-comment">// ERREUR : La variable x a déjà été assignée.</span>
+  <span class="hljs-comment">// Le reste du code ne va pas s'effectuer.</span>
+}
+</div></code></pre>
+<p>Pour <code>const</code>, il n'est ni possible de réassigner...</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> x = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">const</span> x = <span class="hljs-number">1</span>; <span class="hljs-comment">// ERREUR : x a déjà été assignée.</span>
+}
+</div></code></pre>
+<p>... ni possible de modifier la variable.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> x = <span class="hljs-number">1</span>;
+x = <span class="hljs-number">2</span>; <span class="hljs-comment">// ERREUR : x est une constante.</span>
+}
+</div></code></pre>
+<p>Je déconseille fortement d'utiliser l'instruction <code>var</code>.
+Dans le cas du développemment web, l'algorithme ne s'execute pas de manière séquencielle : On ne sait pas à quelle moment l'utilisateur va faire telle ou telle action. Le code peut s'executer de manière un peu aléatoire, il est donc préférable d'utiliser des variables courantes (avec <code>let</code>). Je reparlerai de ce concepte quand j'aborderai les fonctions.</p>
+<p>Une variable ne doit être défini que par des caractères simple. Les lettres de a à z. Il est possible de mettre des majuscules, mais il est d'usage de commencer par une minuscule.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">let</span> pommeDeTerre;
+</div></code></pre>
+<p>Contre-exemple : Les composants en React ont des noms qui commencent par des majuscules.</p>
+<h4 id="a-les-cha%C3%AEnes-de-carat%C3%A8re">a. Les chaînes de caratère</h4>
+<p>Une chaîne de caractères et simplement une suite de caractères, entourés de doubles quotes et de simple quote (<code>' '</code> ou <code>&quot; &quot;</code>).</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">let</span> chaine1 = <span class="hljs-string">'Exemple 1'</span>
+<span class="hljs-keyword">let</span> chaine2 = <span class="hljs-string">"Exemple 2"</span>
+</div></code></pre>
+<p>Que faire si je veux utiliser une apostrophe ou des parenthèses ?
+Il faut utiliser un contre-slash <code>\</code> :</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">let</span> chaine = <span class="hljs-string">'Je m\'appelle professeur'</span>
+<span class="hljs-built_in">console</span>.log(chaine) <span class="hljs-comment">// Je m'appelle professeur</span>
+</div></code></pre>
+<p>Il est possible de concatener plusieurs chaines de caractères :
+(attention aux espaces)</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">let</span> chaine1 = <span class="hljs-string">'Exemple 1'</span>
+<span class="hljs-keyword">let</span> chaine2 = <span class="hljs-string">"Exemple 2"</span>
+<span class="hljs-keyword">let</span> chaine3 = chaine1 + <span class="hljs-string">' '</span> + chaine2
+<span class="hljs-built_in">console</span>.log(chaine1 + chaine2 + chaine3 + <span class="hljs-string">"fin"</span>)
+<span class="hljs-comment">// = Exemple 1Exemple 2Exemple 1 Exemple 2fin</span>
+</div></code></pre>
+<p>Il n'est pas contre évidement pas possible de multiplier, soustraire ou diviser une chaine de caractères.</p>
+<h4 id="b-les-chiffres">b. Les chiffres</h4>
+<pre class="hljs"><code><div><span class="hljs-comment">// Un entier</span>
+<span class="hljs-keyword">let</span> chiffre = <span class="hljs-number">15</span>
+<span class="hljs-comment">// Un nombre à virgule</span>
+<span class="hljs-keyword">let</span> chiffre2 = <span class="hljs-number">12.3</span>
+<span class="hljs-comment">// On peut faire des oppération directement dans la définition de la variable...</span>
+<span class="hljs-keyword">let</span> chiffre3 = <span class="hljs-number">10</span> + <span class="hljs-number">5</span> + (<span class="hljs-number">1.3</span> * <span class="hljs-number">10</span>) - (<span class="hljs-number">14</span> / <span class="hljs-number">2</span>)
+<span class="hljs-comment">// Ou dans une modification</span>
+chiffre3 = <span class="hljs-number">10</span> + <span class="hljs-number">2</span>
+chiffre3 = chiffre3 + <span class="hljs-number">2</span>
+<span class="hljs-comment">// Il est possible de faire des opérations comme ceci :</span>
+chiffre3 += <span class="hljs-number">10</span>
+chiffre3 -= <span class="hljs-number">10</span>
+chiffre3 /= <span class="hljs-number">10</span>
+chiffre3 *= <span class="hljs-number">10</span>
+</div></code></pre>
+<p>Il est possible de faire le même genre d'opération (uniquement l'addition) avec des chaînes de caractère :</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">let</span> a = <span class="hljs-string">'Bonjour'</span>
+a += <span class="hljs-string">' à toi'</span>
+</div></code></pre>
+<p>Il est aussi possible d'additionner un chiffre et une chaine de caractère :</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">let</span> a = <span class="hljs-string">'Hello'</span> + <span class="hljs-number">12</span> <span class="hljs-comment">// Hello12</span>
+</div></code></pre>
+<h4 id="c-les-bool%C3%A9ens">c. Les booléens</h4>
+<p>Il n'existe que deux valeurs possibles pour un booléen</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">let</span> bool = <span class="hljs-literal">true</span>
+<span class="hljs-keyword">let</span> bool2 = <span class="hljs-literal">false</span>
+</div></code></pre>
+<p>Les opérateurs logiques (déjà vu en maths) :
+<code>==</code>, <code>===</code> : égal
+<code>!==</code>, <code>!=</code> : non égal
+<code>&amp;&amp;</code> : et, les deux doivent être vrais
+<code>||</code> : ou, un des deux au minimum doit être vrai
+<code>&lt;</code>, <code>&gt;</code> : inférieur, supérieur
+<code>&lt;=</code>, <code>&gt;=</code> : inférieur ou égal, supérieur ou égal</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">let</span> bool = <span class="hljs-literal">true</span>
+<span class="hljs-keyword">let</span> bool2 = <span class="hljs-literal">false</span>
+<span class="hljs-keyword">let</span> bool3 = <span class="hljs-number">10</span> !== <span class="hljs-number">12</span> <span class="hljs-comment">// =&gt; vrai</span>
+<span class="hljs-keyword">let</span> bool4 = bool &amp;&amp; bool3 <span class="hljs-comment">// =&gt; vrai</span>
+<span class="hljs-keyword">let</span> bool5 = bool || bool2 <span class="hljs-comment">// =&gt; vrai</span>
+<span class="hljs-keyword">let</span> bool6 = (<span class="hljs-literal">false</span> &amp;&amp; <span class="hljs-literal">true</span>) || (bool3 || (bool2 &amp;&amp; <span class="hljs-literal">true</span>)) <span class="hljs-comment">// =&gt; vrai</span>
+</div></code></pre>
+<h4 id="d-les-listes">d. Les listes</h4>
+<p>Les listes sont des objets à indexage numérique, nommé plus communément array qui peuvent contenir tout type de donnée.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">let</span> liste = [<span class="hljs-string">'Oui'</span>, <span class="hljs-number">14</span>, <span class="hljs-literal">true</span>, [<span class="hljs-number">3</span>, <span class="hljs-string">'Non'</span>, <span class="hljs-literal">false</span>]]
+<span class="hljs-comment">// Pour accéder à un élement de la liste, il faut référencier son index en commençant par 0</span>
+<span class="hljs-built_in">console</span>.log(liste[<span class="hljs-number">0</span>]) <span class="hljs-comment">// = Oui</span>
+<span class="hljs-comment">// L'élement 3 est une liste, mais elle n'agit pas comme une extension de la liste, c'est un élement en lui même</span>
+<span class="hljs-built_in">console</span>.log(liste[<span class="hljs-number">3</span>]) <span class="hljs-comment">// = [3, 'Non', false]</span>
+<span class="hljs-built_in">console</span>.log(liste[<span class="hljs-number">3</span>][<span class="hljs-number">1</span>]) <span class="hljs-comment">// = Non</span>
+</div></code></pre>
+<h4 id="e-les-dictionnaires">e. Les dictionnaires</h4>
+<p>Les dictionnaires sont comme les listes, mais leur indexage est libre : ce peut être une chaîne de caractère, un chiffre, ou même un booléen.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// L'indexage peut être noté sans quotes quand la chaîne de caractère n'a pas de d'espace</span>
+<span class="hljs-keyword">let</span> dict = {
+    <span class="hljs-attr">hello</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">dsd</span>: <span class="hljs-string">'salut'</span>,
+    <span class="hljs-number">2</span>: <span class="hljs-string">'skdf'</span>,
+    <span class="hljs-attr">true</span>: <span class="hljs-string">"dfs"</span>,
+    <span class="hljs-string">'salu t'</span>: {
+        <span class="hljs-string">'coucou'</span>: <span class="hljs-string">'salut'</span>
+    }
+}
+<span class="hljs-comment">// Un élement peut être récupéré comme pour les listes</span>
+<span class="hljs-built_in">console</span>.log(dict[<span class="hljs-string">'hello'</span>]) <span class="hljs-comment">// 1</span>
+<span class="hljs-comment">// Attention, sans les quotes, on va ici chercher l'index qui est stocké dans la variable nommée hello</span>
+<span class="hljs-built_in">console</span>.log(dict[hello]) <span class="hljs-comment">// Erreur, hello n'est pas définie</span>
+<span class="hljs-comment">// Il est donc possible de stocker un index dans une variable</span>
+<span class="hljs-keyword">let</span> index = <span class="hljs-string">'dsd'</span>
+<span class="hljs-built_in">console</span>.log(dict[index]) <span class="hljs-comment">// salut</span>
+</div></code></pre>
+<p>On considère que chaque élement d'un dictionnaire est un variable héritée de cet objet.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Pour le cas des chaines de caractère, il est possible de récupérer la variable de cette manière</span>
+<span class="hljs-built_in">console</span>.log(dict.hello)
+</div></code></pre>
+<p>Je reparlerai des élements hérités quand je parlerais des fonctions.</p>
+<h4 id="f-les-donn%C3%A9es-nulles">f. Les données nulles.</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">let</span> a = <span class="hljs-literal">null</span>
+<span class="hljs-keyword">let</span> b = <span class="hljs-literal">undefined</span>
+<span class="hljs-keyword">let</span> b2; <span class="hljs-comment">// undefined</span>
+<span class="hljs-keyword">let</span> c = <span class="hljs-literal">NaN</span> <span class="hljs-comment">// Not a number</span>
+</div></code></pre>
+<h3 id="2-les-conditions-%E2%96%B2">2. Les conditions <a href="#sommaire">▲</a></h3>
+<p>Super partie sur les conditions à effectuer</p>
+<h3 id="3-la-lecture-et-l%C3%A9criture-%E2%96%B2">3. La lecture et l'écriture <a href="#sommaire">▲</a></h3>
+<h4 id="la-lecture">La lecture</h4>
+<p>La lecture est l'entrée utilisateur.
+Dans le cas du JavaScript Vanilla, la lecture se fait à proprement parlé dans le navigateur.
+Il n'est pas nécessaire de faire une partie entière sur ce point.</p>
+<h4 id="l%C3%A9criture">L'écriture</h4>
+<p>L'écriture est ce qui sort de l'algorithme.
+Il y a deux moyen d'écrire dans la console :</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Bonjour'</span>)
+process.stdout.write(<span class="hljs-string">'Bonsoir'</span>)
+</div></code></pre>
+<p>On parle depuis le début de <code>console.log</code>, mais c'est intéressant de savoir qu'il existe un autre moyen d'écrire dans la console.
+Voici un lien pour comprendre les différences entre les deux : <a href="https://www.geeksforgeeks.org/difference-between-process-stdout-write-and-console-log-in-node-js/">Difference between process.stdout.write and console.log in Node.js</a></p>
+<p>Pour rester avec le plus courant, et celui que vous allez le plus utiliser, parlons un peu plus de <code>console.log()</code>.
+Il est possible de faire des opérations dans la fonction :</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">console</span>.log(<span class="hljs-number">12</span>+<span class="hljs-number">4</span>) <span class="hljs-comment">// 16</span>
+</div></code></pre>
+<p>On peut mettre plusieurs arguments :</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Hello'</span>, <span class="hljs-string">'toi'</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]) <span class="hljs-comment">// Hello toi [1, 4, 5]</span>
+</div></code></pre>
+<p>Ils seront compris comme des élements à imprimer les un à la suite des autres dans la console, sans saut à la ligne (\n) mais avec un espace.</p>
+<p>Voici d'autres méthodes de la console utiles à connaître :
+La méthode <code>console.count(&lt;label&gt;)</code>.
+Elle affiche le nombre de fois que la ligne a été appelée avec un label donné.</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">console</span>.count(<span class="hljs-string">'Testing'</span>)
+<span class="hljs-built_in">console</span>.count(<span class="hljs-string">'Testing'</span>)
+<span class="hljs-built_in">console</span>.count(<span class="hljs-string">'Testing'</span>)
+<span class="hljs-comment">// Résultat avec le label Testing</span>
+<span class="hljs-comment">/*
+Testing: 1
+Testing: 2
+Testing: 3
+*/</span>
+</div></code></pre>
+<p>La méthode <code>console.table(&lt;liste|dictionnaire&gt;)</code>.
+Affiche les données d'une liste ou d'un dictionnaire sous forme de tableau.</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">console</span>.table([[<span class="hljs-string">'Paul'</span>, <span class="hljs-string">'Marc'</span>, <span class="hljs-string">'Dominique'</span>], [<span class="hljs-number">19</span>, <span class="hljs-number">67</span>, <span class="hljs-number">69</span>]])
+<span class="hljs-built_in">console</span>.table({
+    <span class="hljs-attr">Marc</span>:{
+        <span class="hljs-attr">age</span>:<span class="hljs-number">39</span>,
+        <span class="hljs-attr">profession</span>:<span class="hljs-string">'Professeur'</span>,
+        <span class="hljs-attr">list</span>:[<span class="hljs-string">'p'</span>, <span class="hljs-string">'a'</span>, <span class="hljs-number">124</span>],
+        <span class="hljs-attr">exemple</span>:{
+            <span class="hljs-attr">one</span>:<span class="hljs-number">1</span>,
+            <span class="hljs-attr">two</span>:<span class="hljs-number">2</span>
+        }
+    },
+    <span class="hljs-attr">Dominique</span>:{
+        <span class="hljs-attr">age</span>:<span class="hljs-number">52</span>,
+        <span class="hljs-attr">profession</span>:<span class="hljs-string">'Technicien'</span>,
+        <span class="hljs-attr">list</span>:[<span class="hljs-string">'o'</span>, <span class="hljs-string">'q'</span>, <span class="hljs-number">19</span>],
+        <span class="hljs-attr">exemple</span>:{
+            <span class="hljs-attr">one</span>:<span class="hljs-number">3</span>,
+            <span class="hljs-attr">two</span>:<span class="hljs-number">4</span>
+        }
+    }
+})
+<span class="hljs-comment">// Résultat</span>
+<span class="hljs-comment">/*
+┌─────────┬────────┬────────┬─────────────┐
+│ (index) │   0    │   1    │      2      │
+├─────────┼────────┼────────┼─────────────┤
+│    0    │ 'Paul' │ 'Marc' │ 'Dominique' │
+│    1    │   19   │   67   │     69      │
+└─────────┴────────┴────────┴─────────────┘
+┌───────────┬─────┬──────────────┬───────────────────┬────────────────────┐
+│  (index)  │ age │  profession  │       list        │      exemple       │
+├───────────┼─────┼──────────────┼───────────────────┼────────────────────┤
+│   Marc    │ 39  │ 'Professeur' │ [ 'p', 'a', 124 ] │ { one: 1, two: 2 } │
+│ Dominique │ 52  │ 'Technicien' │ [ 'o', 'q', 19 ]  │ { one: 3, two: 4 } │
+└───────────┴─────┴──────────────┴───────────────────┴────────────────────┘
+*/</span>
+<span class="hljs-comment">// Attention ! Les listes ou dictionnaires imbriquées ne s'affichent pas sous la forme d'un tableau</span>
+</div></code></pre>
+<p>La méthode <code>console.group()</code> crée un nouveau groupe en ligne, correspondant à un nouveau niveau d'indentation.
+<code>console.groupEnd()</code> referme ce groupe.
+<code>console.groupCollapsed()</code> crée un groupe qiu se referme (avec un bouton pour ouvrir/fermer le bloc). Cette méthode ne fait rien dans le terminal de l'ordinateur, il ne fonctionne que dans le navigateur.</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'1'</span>)
+<span class="hljs-built_in">console</span>.group()
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'2'</span>)
+<span class="hljs-built_in">console</span>.groupCollapsed()
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'3'</span>)
+<span class="hljs-built_in">console</span>.groupEnd()
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'4'</span>)
+<span class="hljs-built_in">console</span>.groupEnd()
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'5'</span>)
+<span class="hljs-comment">// Résultat</span>
+<span class="hljs-comment">/*
+1
+  2
+    3
+  4
+5
+*/</span>
+</div></code></pre>
+<p>Et une dernière méthode, celle-ci utilisé pour connaitre l'efficatité du code.
+La méthode <code>console.time(&lt;label&gt;)</code> démarre un nouveau chronomètre, qui d'arrêtera avec la méthode <code>console.timeEnd(&lt;label&gt;)</code>.</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">console</span>.time(<span class="hljs-string">'Timeur'</span>)
+<span class="hljs-keyword">let</span> cpt = <span class="hljs-number">13</span>*<span class="hljs-number">32</span>
+cpt -= <span class="hljs-number">12</span>
+cpt *= <span class="hljs-number">13</span>
+cpt += <span class="hljs-number">12</span>
+<span class="hljs-built_in">console</span>.log(cpt)
+<span class="hljs-built_in">console</span>.timeEnd(<span class="hljs-string">'Timeur'</span>)
+<span class="hljs-comment">// Résultat avec le label Timeur</span>
+<span class="hljs-comment">/*
+5264
+Timeur: 13.44ms
+*/</span>
+</div></code></pre>
+<p>Pour voir toutes les méthodes inhérentes à la console, n'hésiter pas à consulter <a href="https://developer.mozilla.org/fr/docs/Web/API/Console">la documentation</a></p>
+<h3 id="4-les-boucles-%E2%96%B2">4. Les boucles <a href="#sommaire">▲</a></h3>
+<p>Il existe deux type de boucle :
+Les boucles Tant que, et les boucles Pour.</p>
+<p>Petit exemple pour comprendre la différence :
+Si un politique dit &quot;<strong>Pour</strong> 150 Millions de chomeurs, je vais créer 150 Millions d'emplois&quot;. La limite est bien définie, c'est comme une boucle qui va s'effectuer 150 Millions de fois, et qui va à chaque fois créer un emplois. La boucle à une fin.
+Si un politique dit &quot;<strong>Tant</strong> qu'il y aura des chomeurs, je vais créer des emplois&quot;. La boucle peut s'effectuer à l'infini, car la limite n'est pas définie.</p>
+<p>Les boucles Tant que :</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">while</span> (<span class="hljs-comment">/*condition*/</span>) {
+  <span class="hljs-comment">// Code de la boucle</span>
+}
+
+<span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Bonjour'</span>)
+}
+<span class="hljs-comment">// Résultat</span>
+<span class="hljs-comment">/*
+Bonjour
+Bonjour
+Bonjour
+...
+Jusqu'à l'infini, car true ne changera jamais
+*/</span>
+<span class="hljs-keyword">let</span> i = <span class="hljs-number">5</span>;
+<span class="hljs-keyword">let</span> j = <span class="hljs-number">2</span>;
+<span class="hljs-comment">// Tant que j est supérieur à 0</span>
+<span class="hljs-keyword">while</span> (j &gt; <span class="hljs-number">0</span>) {
+  <span class="hljs-keyword">if</span> (i &gt; j) {
+    i -= j
+  } <span class="hljs-keyword">else</span> {
+    j -= i
+  }
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'i : ${i}\nj : ${j}\n'</span>)
+}
+<span class="hljs-comment">// Résultat</span>
+<span class="hljs-comment">/*
+i : 3
+j : 2
+
+i : 1
+j : 2
+
+i : 1
+j : 1
+
+i : 1
+j : 0
+*/</span>
+<span class="hljs-comment">// j n'est plus supérieur à 0</span>
+</div></code></pre>
+<p>Les boucles Pour</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">for</span> (<span class="hljs-comment">/*'variable de départ'*/</span>; <span class="hljs-comment">/*'condition de fonctionnement'*/</span>; <span class="hljs-comment">/*'expression de fin de boucle'*/</span>) {
+  <span class="hljs-comment">// Code de la boucle</span>
+}
+<span class="hljs-comment">// Pour...</span>
+<span class="hljs-comment">// i est la variable de départ</span>
+<span class="hljs-comment">// Il faut que i soit inférieur à 5</span>
+<span class="hljs-comment">// On incrémente i à la fin de la boucle</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) {
+  <span class="hljs-built_in">console</span>.log(i)
+}
+<span class="hljs-comment">// Résultat :</span>
+<span class="hljs-comment">/*
+0
+1
+2
+3
+4
+*/</span>
+</div></code></pre>
+<p>J'ai pas finis</p>
+<h3 id="5-les-fonctions-%E2%96%B2">5. Les fonctions <a href="#sommaire">▲</a></h3>
+
+</body>
+</html>

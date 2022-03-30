@@ -5,6 +5,7 @@
   "main": "main.js",
   "scripts": {
     "up": "git add * && git commit -m '-' && git push",
+    "down": "git pull https://github.com/LouisRvlE/Cours-JS.git main",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
