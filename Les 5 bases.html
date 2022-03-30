@@ -408,7 +408,9 @@ f. <a href="#f-les-donn%C3%A9es-nulles">Les données nulles</a> <br></li>
 <a href="#la-lecture">La lecture</a> <br>
 <a href="#l%C3%A9criture">L'écriture</a> <br></li>
 <li><a href="#4-les-boucles">Les boucles</a> <br></li>
-<li><a href="#5-les-fonctions">Les fonctions</a> <br></li>
+<li><a href="#5-les-fonctions">Les fonctions</a> <br>
+<a href="#d%C3%A9finition">Définition</a> <br>
+<a href="#h%C3%A9ritage-et-this">Héritage et <code>this</code></a></li>
 </ol>
 <p>Clique sur le bouton ▲ pour revenir au sommaire.</p>
 <h3 id="1-les-variables">1. Les variables</h3>
@@ -815,6 +817,7 @@ Hey
 </div></code></pre>
 <h3 id="5-les-fonctions">5. Les fonctions</h3>
 <p><a href="#sommaire">▲</a></p>
+<h4 id="d%C3%A9finition">Définition</h4>
 <p>On dit d'une fonction qu'elle est définie, et qu'elle peut être appelée.
 La définition de la fonction correspond aux actions qui vont être executées quand elle va être appelée.
 Une définition seule ne va rien produire.</p>
@@ -922,7 +925,7 @@ Ce mot clé arrête d'ailleurs l'execution de la fonction :</p>
 </tr>
 </tbody>
 </table>
-<h4 id="les-%C3%A9lements-h%C3%A9rit%C3%A9s-et-this">Les élements hérités et <code>this</code></h4>
+<h4 id="h%C3%A9ritage-et-this">Héritage et <code>this</code></h4>
 <p>Nous pouvons stocker nos fonctions, comme tout objet, dans des variables, mais aussi dans des liste, ou des dictionnaire, à côtés d'autres valeurs :</p>
 <pre class="hljs"><code><div><span class="hljs-keyword">const</span> list = [
     <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
@@ -938,22 +941,81 @@ list[<span class="hljs-number">0</span>]()
 list[<span class="hljs-number">1</span>](<span class="hljs-string">'Salut'</span>)
 list[<span class="hljs-number">1</span>](list[<span class="hljs-number">2</span>])
 </div></code></pre>
-<p>Nous trouvons d'ailleurs un nouveau mot clé : <code>this</code>, qui fait référence à l'objet dans lequel se trouve la fonction.
-Poour rappelle, ce mot clé n'est transmis qu'avec les fonctions traditionnelles (<code>function name() {}</code> ou <code>function() {}</code>), et pas dans une fonction fléchée (<code>() =&gt; {}</code>).</p>
+<p>Ces fonctions sont considérées comme des fonctions héritées de l'objet liste, des méthodes de liste.
+Cet exemple permet de mieux intégrer des concepts comme ceux des méthodes de la <code>console</code> ou de l'objet <code>Math</code>.
+Les fonctions <code>log()</code> et <code>table()</code> sont des méthodes hérités de l'objet <code>console</code>, et les fonctions <code>floor()</code> et <code>random()</code> sont des méthodes hérités de l'objet <code>Math</code>.
+Pour aller encore plus loin, définisson ce qu'est un prototype, avec un exemple :
+Le prototype de <code>String</code>, d'une chaîne de caractère est un objet auquel on a attaché des méthodes, tel que <code>replace()</code>, ou encore <code>trim()</code>. Chaque chaîne de caractère obtient toutes ces mêmes méthodes.</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Salut les copains'</span>.replace(<span class="hljs-string">'copains'</span>, <span class="hljs-string">'amis'</span>)) <span class="hljs-comment">// Salut les amis</span>
+</div></code></pre>
+<p>En conséquence, nous pouvons y attacher de nouvelles méthodes (attention à ne pas utiliser un nom de fonction déjà existante) :</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">String</span>.prototype.why = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// Obtenir une copie de ce qu'était la chaine de caractère</span>
+    <span class="hljs-keyword">let</span> str = <span class="hljs-keyword">this</span>.valueOf();
+    <span class="hljs-comment">// On y ajouter quelque chose</span>
+    str = str + <span class="hljs-string">' ?'</span>;
+    <span class="hljs-comment">// Et on oublie pas de le renvoyer</span>
+    <span class="hljs-keyword">return</span> str
+}
+
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'salut'</span>) <span class="hljs-comment">// salut</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'salut'</span>.why()) <span class="hljs-comment">// salut ?</span>
+</div></code></pre>
+<p>Nous trouvons d'ailleurs un nouveau mot clé : <code>this</code>, qui fait référence à l'objet duquel on appel la fonction, l'objet qui hérite du prototype si la fonction y est attachée, ou simplement la liste ou le dictionnaire dans laquelle la fonction est stockée.
+Pour rappelle, ce mot clé n'est transmis qu'avec les fonctions traditionnelles (<code>function name() {}</code> ou <code>function() {}</code>), et pas dans une fonction fléchée (<code>() =&gt; {}</code>).
+Dans le cas ou une fonction est directement à la racine d'un fichier (ou imbriquée dans une autre fonction), this correspondra à l'objet global</p>
+<p>&quot;Qu'est-ce qu'un objet global en JavaScript ?</p>
+<p>L'objet global en JavaScript est un objet toujours défini qui fournit des variables et des fonctions, et est disponible n'importe où. Dans un navigateur Web, l'objet global est l'objet window, alors qu'il est nommé global dans Node.js. L'objet global est accessible à l'aide de l'opérateur this dans la portée globale.&quot; <a href="https://www.contentful.com/blog/2017/01/17/the-global-object-in-javascript/#:~:text=The%20global%20object%20in%20JavaScript%20is%20an%20always%20defined%20object,operator%20in%20the%20global%20scope.">(source)</a></p>
+<pre class="hljs"><code><div><span class="hljs-built_in">Array</span>.prototype.superPush = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">el</span>) </span>{
+    <span class="hljs-keyword">if</span> (!el) <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>
+    <span class="hljs-keyword">this</span>.push(el)
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>
+}
+
+<span class="hljs-built_in">Object</span>.prototype.superSet = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">key, value</span>) </span>{
+    <span class="hljs-keyword">if</span> (!key || !value) <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>
+    <span class="hljs-keyword">this</span>[key] = value
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>
+}
+
+<span class="hljs-built_in">console</span>.log([<span class="hljs-number">1</span>].superPush(<span class="hljs-number">2</span>)) <span class="hljs-comment">// [ 1, 2 ]</span>
+<span class="hljs-built_in">console</span>.log([<span class="hljs-number">1</span>].superPush(<span class="hljs-literal">null</span>)) <span class="hljs-comment">// [ 1 ]</span>
+
+<span class="hljs-built_in">console</span>.log({<span class="hljs-attr">salut</span>:<span class="hljs-number">1</span>}.superSet(<span class="hljs-string">'hello'</span>, <span class="hljs-number">2</span>)) <span class="hljs-comment">// { salut: 1, hello: 2 }</span>
+<span class="hljs-built_in">console</span>.log({<span class="hljs-attr">salut</span>:<span class="hljs-number">1</span>}.superSet(<span class="hljs-literal">null</span>, <span class="hljs-number">2</span>)) <span class="hljs-comment">// { salut: 1 }</span>
+<span class="hljs-built_in">console</span>.log({<span class="hljs-attr">salut</span>:<span class="hljs-number">1</span>}.superSet(<span class="hljs-string">'hello'</span>, <span class="hljs-literal">null</span>)) <span class="hljs-comment">// { salut: 1 }</span>
+</div></code></pre>
+<p>Dans cette exemple, toute liste présente après cette définition pourra profiter de la méthode <code>superPush()</code>, et tout dictionnaire après cette définition pourra profiter de la méthode <code>superSet()</code>.</p>
 <pre class="hljs"><code><div><span class="hljs-keyword">const</span> dict = {
     <span class="hljs-attr">one</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
         <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.salut)
+        <span class="hljs-keyword">this</span>.salut = <span class="hljs-string">'non'</span>
     },
     <span class="hljs-attr">salut</span>:<span class="hljs-string">'oui'</span>
 }
 
 dict.one() <span class="hljs-comment">// =&gt; oui</span>
+dict.one() <span class="hljs-comment">// =&gt; non</span>
 </div></code></pre>
 <p>Ici <code>this</code> correspond au dictionnaire <code>dict</code>, donc <code>this.salut</code> correspond à <code>dict.salut</code>.
-Dans le cas ou une fonction est directement à la racine d'un fichier (ou imbriquée dans une autre fonction), this correspondra à l'objet global</p>
-<p>&quot;Qu'est-ce qu'un objet global en JavaScript ?</p>
-<p>L'objet global en JavaScript est un objet toujours défini qui fournit des variables et des fonctions, et est disponible n'importe où. Dans un navigateur Web, l'objet global est l'objet window, alors qu'il est nommé global dans Node.js. L'objet global est accessible à l'aide de l'opérateur this dans la portée globale.&quot; <a href="https://www.contentful.com/blog/2017/01/17/the-global-object-in-javascript/#:~:text=The%20global%20object%20in%20JavaScript%20is%20an%20always%20defined%20object,operator%20in%20the%20global%20scope.">(source)</a></p>
-<p>Les elements hérités</p>
+Comme la fonction est attachée à l'objet et non pas au protoype <code>Object.prototype</code> (ou <code>Array.protype</code> dans le cas d'une liste), cette méthode ne sera hérité que de cette objet.</p>
+<p>Dans le cas du stockage d'une méthode dans une fonction, ```this`` fait référence au palier actuel, donc il renverra toujours le dictionnaire, ou la liste, dans lequel il est stocké :</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> dict = {
+    <span class="hljs-attr">one</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.salut)
+    },
+    <span class="hljs-attr">salut</span>:<span class="hljs-string">'oui'</span>,
+    <span class="hljs-attr">inner</span>:{
+        <span class="hljs-attr">func</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.salut)
+        },
+        <span class="hljs-attr">salut</span>:<span class="hljs-string">'non'</span>
+    }
+}
+
+dict.one() <span class="hljs-comment">// oui</span>
+dict.inner.func() <span class="hljs-comment">// non</span>
+</div></code></pre>
 
 </body>
 </html>

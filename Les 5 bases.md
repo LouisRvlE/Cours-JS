@@ -15,6 +15,8 @@
   [L'écriture](#lécriture) <br>
 4) [Les boucles](#4-les-boucles) <br>
 5) [Les fonctions](#5-les-fonctions) <br>
+  [Définition](#définition) <br>
+  [Héritage et ``this``](#héritage-et-this)
 
 Clique sur le bouton ▲ pour revenir au sommaire.
 
@@ -513,6 +515,8 @@ for (let el of ['One', 'Two', 'Three']) console.log(el);
 ### 5. Les fonctions
 [▲](#sommaire)
 
+#### Définition
+
 On dit d'une fonction qu'elle est définie, et qu'elle peut être appelée.
 La définition de la fonction correspond aux actions qui vont être executées quand elle va être appelée.
 Une définition seule ne va rien produire.
@@ -619,7 +623,7 @@ console.log(testing(1, 4, 0.5, 2)) // => [ 'Invalide', [] ]
 | Avec argument | ``let result = func(13)`` | ``func(13)`` |
 | Sans argument | ``let result = func()``   | ``func()``   |
 
-#### Les élements hérités et ``this``
+#### Héritage et ``this``
 
 Nous pouvons stocker nos fonctions, comme tout objet, dans des variables, mais aussi dans des liste, ou des dictionnaire, à côtés d'autres valeurs :
 ```js
@@ -670,16 +674,26 @@ Dans le cas ou une fonction est directement à la racine d'un fichier (ou imbriq
 L'objet global en JavaScript est un objet toujours défini qui fournit des variables et des fonctions, et est disponible n'importe où. Dans un navigateur Web, l'objet global est l'objet window, alors qu'il est nommé global dans Node.js. L'objet global est accessible à l'aide de l'opérateur this dans la portée globale." [(source)](https://www.contentful.com/blog/2017/01/17/the-global-object-in-javascript/#:~:text=The%20global%20object%20in%20JavaScript%20is%20an%20always%20defined%20object,operator%20in%20the%20global%20scope.)
 ```js
 Array.prototype.superPush = function(el) {
+    if (!el) return this
     this.push(el)
     return this
 }
-Object.prototype.sett = function(key, value) {
+
+Object.prototype.superSet = function(key, value) {
+    if (!key || !value) return this
     this[key] = value
     return this
 }
+
 console.log([1].superPush(2)) // [ 1, 2 ]
-console.log({salut:1}.sett('hello', 2)) // { salut: 1, hello: 2 }
+console.log([1].superPush(null)) // [ 1 ]
+
+console.log({salut:1}.superSet('hello', 2)) // { salut: 1, hello: 2 }
+console.log({salut:1}.superSet(null, 2)) // { salut: 1 }
+console.log({salut:1}.superSet('hello', null)) // { salut: 1 }
 ```
+Dans cette exemple, toute liste présente après cette définition pourra profiter de la méthode `superPush()`, et tout dictionnaire après cette définition pourra profiter de la méthode `superSet()`.
+
 ```js
 const dict = {
     one: function() {
