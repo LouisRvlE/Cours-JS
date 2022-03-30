@@ -397,17 +397,22 @@ code {
 <h3 id="sommaire">Sommaire</h3>
 <ol>
 <li><a href="#1-les-variables">Les variables</a> <br>
-a. <a href="#assigniations-des-variables">Assigniations des variables</a> <br>
+<a href="#assigniations-des-variables">Assigniations des variables</a> <br>
+a. <a href="#a-les-cha%C3%AEnes-de-carat%C3%A8re">Chaine de caractère</a> <br>
 b. <a href="#b-les-chiffres">Les chiffres</a> <br>
 c. <a href="#c-les-bool%C3%A9ens">Les booléens</a> <br>
 d. <a href="#d-les-listes">Les listes</a> <br>
 e. <a href="#e-les-dictionnaires">Les dictionnaires</a> <br>
 f. <a href="#f-les-donn%C3%A9es-nulles">Les données nulles</a> <br></li>
-<li><a href="#2-les-conditions">Les conditions </a> <br></li>
+<li><a href="#2-les-conditions">Les conditions </a> <br>
+<a href="#if-else-else-if">If, Else, Else if</a>
+<a href="#le-switch">Le Switch</a></li>
 <li><a href="#3-la-lecture-et-l%C3%A9criture">La lecture et l'écriture</a> <br>
 <a href="#la-lecture">La lecture</a> <br>
 <a href="#l%C3%A9criture">L'écriture</a> <br></li>
-<li><a href="#4-les-boucles">Les boucles</a> <br></li>
+<li><a href="#4-les-boucles">Les boucles</a> <br>
+<a href="#les-boucles-tant-que">Tant que</a> <br>
+<a href="#les-boucles-pour">Pour</a> <br></li>
 <li><a href="#5-les-fonctions">Les fonctions</a> <br>
 <a href="#d%C3%A9finition">Définition</a> <br>
 <a href="#h%C3%A9ritage-et-this">Héritage et <code>this</code></a></li>
@@ -479,9 +484,10 @@ Dans le cas du développemment web, l'algorithme ne s'execute pas de manière s�
 </div></code></pre>
 <p>Contre-exemple : Les composants en React ont des noms qui commencent par des majuscules.</p>
 <h4 id="a-les-cha%C3%AEnes-de-carat%C3%A8re">a. Les chaînes de caratère</h4>
-<p>Une chaîne de caractères et simplement une suite de caractères, entourés de doubles quotes et de simple quote (<code>' '</code> ou <code>&quot; &quot;</code>).</p>
+<p>Une chaîne de caractères et simplement une suite de caractères, entourés de doubles quotes &quot; &quot; et de simple quote ' ' ou d'accent grave ` `.</p>
 <pre class="hljs"><code><div><span class="hljs-keyword">let</span> chaine1 = <span class="hljs-string">'Exemple 1'</span>
 <span class="hljs-keyword">let</span> chaine2 = <span class="hljs-string">"Exemple 2"</span>
+<span class="hljs-keyword">let</span> chaine3 = <span class="hljs-string">`Exemple 2`</span>
 </div></code></pre>
 <p>Que faire si je veux utiliser une apostrophe ou des parenthèses ?
 Il faut utiliser un contre-slash <code>\</code> :</p>
@@ -497,6 +503,12 @@ Il faut utiliser un contre-slash <code>\</code> :</p>
 <span class="hljs-comment">// = Exemple 1Exemple 2Exemple 1 Exemple 2fin</span>
 </div></code></pre>
 <p>Il n'est pas contre évidement pas possible de multiplier, soustraire ou diviser une chaine de caractères.</p>
+<p>On peut par contre intégrer des variable dans une chaîne de caractère autrement qu'en les addiotionnant, avec les littéraux de gabarits :</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">let</span> firstName = <span class="hljs-string">'Pierre'</span>
+<span class="hljs-keyword">let</span> lastName = <span class="hljs-string">'Abés'</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Bonjour à toi cher <span class="hljs-subst">${firstName}</span> <span class="hljs-subst">${lastName}</span>`</span>)
+</div></code></pre>
+<p>Cependant, il faut obligatoirement utiliser des accents grâve pour utiliser les littéraux de gabarits.</p>
 <h4 id="b-les-chiffres">b. Les chiffres</h4>
 <pre class="hljs"><code><div><span class="hljs-comment">// Un entier</span>
 <span class="hljs-keyword">let</span> chiffre = <span class="hljs-number">15</span>
@@ -507,7 +519,7 @@ Il faut utiliser un contre-slash <code>\</code> :</p>
 <span class="hljs-comment">// Ou dans une modification</span>
 chiffre3 = <span class="hljs-number">10</span> + <span class="hljs-number">2</span>
 chiffre3 = chiffre3 + <span class="hljs-number">2</span>
-<span class="hljs-comment">// Il est possible de faire des opérations comme ceci :</span>
+<span class="hljs-comment">// Il est possible de faire des opérations comme ceci, avec les opérateurs d'expression :</span>
 chiffre3 += <span class="hljs-number">10</span>
 chiffre3 -= <span class="hljs-number">10</span>
 chiffre3 /= <span class="hljs-number">10</span>
@@ -531,13 +543,15 @@ a += <span class="hljs-string">' à toi'</span>
 <code>&amp;&amp;</code> : et, les deux doivent être vrais
 <code>||</code> : ou, un des deux au minimum doit être vrai
 <code>&lt;</code>, <code>&gt;</code> : inférieur, supérieur
-<code>&lt;=</code>, <code>&gt;=</code> : inférieur ou égal, supérieur ou égal</p>
+<code>&lt;=</code>, <code>&gt;=</code> : inférieur ou égal, supérieur ou égal
+<code>!</code> : inverse</p>
 <pre class="hljs"><code><div><span class="hljs-keyword">let</span> bool = <span class="hljs-literal">true</span>
 <span class="hljs-keyword">let</span> bool2 = <span class="hljs-literal">false</span>
 <span class="hljs-keyword">let</span> bool3 = <span class="hljs-number">10</span> !== <span class="hljs-number">12</span> <span class="hljs-comment">// =&gt; vrai</span>
 <span class="hljs-keyword">let</span> bool4 = bool &amp;&amp; bool3 <span class="hljs-comment">// =&gt; vrai</span>
 <span class="hljs-keyword">let</span> bool5 = bool || bool2 <span class="hljs-comment">// =&gt; vrai</span>
 <span class="hljs-keyword">let</span> bool6 = (<span class="hljs-literal">false</span> &amp;&amp; <span class="hljs-literal">true</span>) || (bool3 || (bool2 &amp;&amp; <span class="hljs-literal">true</span>)) <span class="hljs-comment">// =&gt; vrai</span>
+<span class="hljs-keyword">let</span> bool7 = !(<span class="hljs-literal">false</span> &amp;&amp; <span class="hljs-literal">true</span>) || (bool3 || (bool2 &amp;&amp; <span class="hljs-literal">true</span>)) <span class="hljs-comment">// =&gt; faux</span>
 </div></code></pre>
 <h4 id="d-les-listes">d. Les listes</h4>
 <p>Les listes sont des objets à indexage numérique, nommé plus communément array qui peuvent contenir tout type de donnée.</p>
@@ -547,6 +561,15 @@ a += <span class="hljs-string">' à toi'</span>
 <span class="hljs-comment">// L'élement 3 est une liste, mais elle n'agit pas comme une extension de la liste, c'est un élement en lui même</span>
 <span class="hljs-built_in">console</span>.log(liste[<span class="hljs-number">3</span>]) <span class="hljs-comment">// = [3, 'Non', false]</span>
 <span class="hljs-built_in">console</span>.log(liste[<span class="hljs-number">3</span>][<span class="hljs-number">1</span>]) <span class="hljs-comment">// = Non</span>
+</div></code></pre>
+<p>On peut additionner les listes en utilisant la syntaxe de décomposition :</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">let</span> l1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
+<span class="hljs-keyword">let</span> l2 = [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]
+<span class="hljs-comment">// Crée une liste avec deux sous-listes</span>
+<span class="hljs-built_in">console</span>.log([l1, l2]) <span class="hljs-comment">// =&gt; [ [ 1, 2, 3 ], [ 4, 5, 6 ] ]</span>
+<span class="hljs-comment">// Crée une liste composée de deux listes décomposées</span>
+<span class="hljs-built_in">console</span>.log([...l1, ...l2]) <span class="hljs-comment">// =&gt; [ 1, 2, 3, 4, 5, 6 ]</span>
+
 </div></code></pre>
 <h4 id="e-les-dictionnaires">e. Les dictionnaires</h4>
 <p>Les dictionnaires sont comme les listes, mais leur indexage est libre : ce peut être une chaîne de caractère, un chiffre, ou même un booléen.</p>
@@ -573,6 +596,25 @@ a += <span class="hljs-string">' à toi'</span>
 <span class="hljs-built_in">console</span>.log(dict.hello)
 </div></code></pre>
 <p>Je reparlerai des élements hérités quand je parlerais des <a href="#5-les-fonctions">fonctions</a>.</p>
+<p>La syntaxe de décomposition peut aussi être utilisée ici :</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">let</span> d1 = {
+    <span class="hljs-attr">Bonjour</span>:<span class="hljs-string">'Aurevoir'</span>,
+    <span class="hljs-attr">Salut</span>:<span class="hljs-string">'Salut'</span>,
+}
+<span class="hljs-keyword">let</span> d2 = {
+    <span class="hljs-attr">Salut</span>:<span class="hljs-string">'Saluut'</span>,
+    <span class="hljs-attr">Hey</span>:<span class="hljs-string">'Bye'</span>
+}
+<span class="hljs-comment">// Crée un dictionnaire avec deux sous-dictionnaires</span>
+<span class="hljs-built_in">console</span>.log({d1, d2}) <span class="hljs-comment">/* =&gt;
+{
+  d1: { Bonjour: 'Aurevoir', Salut: 'Salut' },
+  d2: { Salut: 'Saluut', Hey: 'Bye' }
+}
+*/</span>
+<span class="hljs-comment">// Crée un dictionnaire composé de deux dictionnaires décomposés</span>
+<span class="hljs-built_in">console</span>.log({...d1, ...d2}) <span class="hljs-comment">// =&gt; { Bonjour: 'Aurevoir', Salut: 'Saluut', Hey: 'Bye' }</span>
+</div></code></pre>
 <h4 id="f-les-donn%C3%A9es-nulles">f. Les données nulles.</h4>
 <pre class="hljs"><code><div><span class="hljs-keyword">let</span> a = <span class="hljs-literal">null</span>
 <span class="hljs-keyword">let</span> b = <span class="hljs-literal">undefined</span>
@@ -581,6 +623,7 @@ a += <span class="hljs-string">' à toi'</span>
 </div></code></pre>
 <h3 id="2-les-conditions">2. Les conditions</h3>
 <p><a href="#sommaire">▲</a></p>
+<h4 id="if-else-else-if">If, Else, Else if</h4>
 <p><code>if</code>, <code>else</code> et <code>else if</code> sont les trois instructions de cette partie, respectivement en français : &quot;si&quot;, &quot;sinon&quot;, et &quot;sinon si&quot;.
 Un bloc <code>if</code> ne va s'executer que <strong>si</strong> une <strong>condition</strong> booléenne est remplie.
 Une condition booléenne est simplement une valeur booléenne, comme on a pu le voir dans <a href="#c-les-bool%C3%A9ens">&gt;cette partie&lt;</a>.
@@ -605,6 +648,35 @@ Et à la suite d'un bloc <code>if</code> ou <code>else if</code>, il est possibl
 <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>) <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'ici'</span>)
 <span class="hljs-keyword">else</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'par ici'</span>)
 <span class="hljs-comment">// =&gt; ici</span>
+</div></code></pre>
+<h4 id="le-switch">Le switch</h4>
+<p>L'instruction <code>switch</code> permet d'effectuer une action en fonction d'un cas précis.
+Dans l'exemle suivant, en fonction de la couleur choisis, l'algorithme donne un avis précis.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> colorList = [
+    <span class="hljs-string">'bleu'</span>,
+    <span class="hljs-string">'rouge'</span>,
+    <span class="hljs-string">'vert'</span>,
+    <span class="hljs-string">'orange'</span>
+]
+
+<span class="hljs-keyword">const</span> swithCase = <span class="hljs-function">(<span class="hljs-params">theCase</span>) =&gt;</span> {
+    <span class="hljs-keyword">switch</span> (theCase) {
+      <span class="hljs-keyword">case</span> <span class="hljs-string">'rouge'</span>:
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Ah j\'aime bien le rouge'</span>);
+        <span class="hljs-keyword">break</span>;
+      <span class="hljs-keyword">case</span> <span class="hljs-string">'vert'</span>:
+      <span class="hljs-keyword">case</span> <span class="hljs-string">'orange'</span>:
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Cette couleur n\'est pas spécialement dans mon cœur'</span>);
+        <span class="hljs-keyword">break</span>;
+      <span class="hljs-keyword">default</span>:
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`C'est quoi le <span class="hljs-subst">${theCase}</span> ?`</span>);
+    }
+}
+
+swithCase(colorList[<span class="hljs-number">0</span>]) <span class="hljs-comment">// =&gt; C'est quoi le bleu ?</span>
+swithCase(colorList[<span class="hljs-number">1</span>]) <span class="hljs-comment">// =&gt; Ah j'aime bien le rouge</span>
+swithCase(colorList[<span class="hljs-number">2</span>]) <span class="hljs-comment">// =&gt; Cette couleur n'est pas spécialement dans mon cœur</span>
+swithCase(colorList[<span class="hljs-number">3</span>]) <span class="hljs-comment">// =&gt; Cette couleur n'est pas spécialement dans mon cœur</span>
 </div></code></pre>
 <h3 id="3-la-lecture-et-l%C3%A9criture">3. La lecture et l'écriture</h3>
 <p><a href="#sommaire">▲</a></p>
@@ -725,7 +797,7 @@ Les boucles Tant que, et les boucles Pour.</p>
 <p>Petit exemple pour comprendre la différence :
 Si un politique dit &quot;<strong>Pour</strong> 150 Millions de chomeurs, je vais créer 150 Millions d'emplois&quot;. La limite est bien définie, c'est comme une boucle qui va s'effectuer 150 Millions de fois, et qui va à chaque fois créer un emplois. La boucle à une fin.
 Si un politique dit &quot;<strong>Tant</strong> qu'il y aura des chomeurs, je vais créer des emplois&quot;. La boucle peut s'effectuer à l'infini, car la limite n'est pas définie.</p>
-<p>Les boucles Tant que :</p>
+<h4 id="les-boucles-tant-que">Les boucles Tant que :</h4>
 <pre class="hljs"><code><div><span class="hljs-keyword">while</span> (<span class="hljs-comment">/*condition*/</span>) {
   <span class="hljs-comment">// Code de la boucle</span>
 }
@@ -768,7 +840,20 @@ j : 0
 */</span>
 <span class="hljs-comment">// j n'est plus supérieur à 0</span>
 </div></code></pre>
-<p>Les boucles Pour</p>
+<p>Il existe une dernière manière de faire une boucle Tant que, avec l'instruction <code>do...while</code> :
+&quot;L'instruction <code>do...while</code> crée une boucle qui exécute une instruction jusqu'à ce qu'une condition de test ne soit plus vérifiée. La condition est testée après que l'instruction soit exécutée, le bloc d'instructions défini dans la boucle est donc exécuté au moins une fois.&quot;</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">let</span> result = <span class="hljs-string">''</span>;
+<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;
+
+<span class="hljs-keyword">do</span> {
+  i = i + <span class="hljs-number">1</span>;
+  result = result + i;
+} <span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">5</span>);
+
+<span class="hljs-built_in">console</span>.log(result) <span class="hljs-comment">// =&gt; "12345"</span>
+</div></code></pre>
+<p><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Statements/do...while">(source)</a></p>
+<h4 id="les-boucles-pour">Les boucles Pour</h4>
 <pre class="hljs"><code><div><span class="hljs-keyword">for</span> (<span class="hljs-comment">/*'variable de départ'*/</span>; <span class="hljs-comment">/*'condition de fonctionnement'*/</span>; <span class="hljs-comment">/*'expression de fin de boucle'*/</span>) {
   <span class="hljs-comment">// Code de la boucle</span>
 }
@@ -814,6 +899,30 @@ Hey
 <p>Je rappelle qu'il est possible de retrouver l'élement si on a l'index (<code>liste[i] = el</code>).</p>
 <p>En appliquant la même logique qu'avec les <code>if</code>, nous pouvons utiliser une boucle Pour sans bloc :</p>
 <pre class="hljs"><code><div><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> el <span class="hljs-keyword">of</span> [<span class="hljs-string">'One'</span>, <span class="hljs-string">'Two'</span>, <span class="hljs-string">'Three'</span>]) <span class="hljs-built_in">console</span>.log(el);
+</div></code></pre>
+<p>Il est possible de stopper une boucle de différentes manières :
+<code>break</code> : arrête complètement la boucle</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>
+
+<span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">6</span>) {
+  <span class="hljs-keyword">if</span> (i === <span class="hljs-number">3</span>) {
+    <span class="hljs-keyword">break</span>
+  }
+  i = i + <span class="hljs-number">1</span>
+}
+<span class="hljs-built_in">console</span>.log(i) <span class="hljs-comment">// =&gt; 3</span>
+</div></code></pre>
+<p><code>continue</code>: passe à l'itération suivante</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">let</span> text = <span class="hljs-string">''</span>
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) {
+  <span class="hljs-keyword">if</span> (i === <span class="hljs-number">3</span>) {
+    <span class="hljs-keyword">continue</span>
+  }
+  text = text + i
+}
+
+<span class="hljs-built_in">console</span>.log(text) <span class="hljs-comment">// =&gt; 012456789</span>
 </div></code></pre>
 <h3 id="5-les-fonctions">5. Les fonctions</h3>
 <p><a href="#sommaire">▲</a></p>
@@ -886,7 +995,8 @@ Ce mot clé arrête d'ailleurs l'execution de la fonction :</p>
 <span class="hljs-built_in">console</span>.log(testing()) <span class="hljs-comment">// =&gt; Hello 13</span>
 </div></code></pre>
 <p>Tout ce qui était après <code>return</code> ne s'est pas executé.</p>
-<p>Voici un exemple d'utilisation partique :</p>
+<p>La syntaxe de décomposition s'utilise aussi dans les fonctions.
+Voici un exemple d'utilisation partique avec les différents élements cités :</p>
 <pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inverse</span>(<span class="hljs-params">a, b, c, d</span>) </span>{
     <span class="hljs-keyword">let</span> det = a*d-b*c
     <span class="hljs-keyword">if</span> (det === <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> [<span class="hljs-string">'Invalide'</span>, []]
@@ -900,8 +1010,11 @@ Ce mot clé arrête d'ailleurs l'execution de la fonction :</p>
   }
   
 <span class="hljs-built_in">console</span>.log(inverse(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>)) <span class="hljs-comment">// =&gt; [ 'Valide', [ [ -2, 1 ], [ 1.5, -0.5 ] ] ]</span>
-<span class="hljs-built_in">console</span>.log(testing(<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">0.5</span>, <span class="hljs-number">2</span>)) <span class="hljs-comment">// =&gt; [ 'Invalide', [] ]</span>
+<span class="hljs-built_in">console</span>.log(inverse(<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">0.5</span>, <span class="hljs-number">2</span>)) <span class="hljs-comment">// =&gt; [ 'Invalide', [] ]</span>
 
+<span class="hljs-comment">// Récupérons d'une variable en décomposant...</span>
+<span class="hljs-keyword">let</span> matrice = [[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>], [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>]]
+<span class="hljs-built_in">console</span>.log(inverse(...[...matrice[<span class="hljs-number">0</span>], ...matrice[<span class="hljs-number">1</span>]])) <span class="hljs-comment">// =&gt; [ 'Valide', [ [ -2, 1 ], [ 1.5, -0.5 ] ] ]</span>
 </div></code></pre>
 <p>À des fins de précisions, il est tout à fait possible d'avoir une fonction qui fait un retour sans arguments. Il y a en fait quatre cas de figure :</p>
 <table>
@@ -1016,6 +1129,20 @@ Comme la fonction est attachée à l'objet et non pas au protoype <code>Object.p
 dict.one() <span class="hljs-comment">// oui</span>
 dict.inner.func() <span class="hljs-comment">// non</span>
 </div></code></pre>
+<p>Le cours se finit ici. Une grande partie des bases à connaîtres ont été noté dans ce document, qui est voué à évoluer. Je suis conscient d'avoir oublié des tas de choses dans la rédaction de ce cours.</p>
+<p>Afin de compléter un peu le cours, voici une liste de lien contenant toutes les méthodes de différents Objets standards choisis de manière non exaustive. Tout ces liens proviennent de <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript">la page de documentation JavaScript de Mozilla.org</a>. Je vous conseille d'y jeter un œil afin de connaître en profondeurs les objets en JS. Je ferais dans le futur un cours contenant les méthodes les plus courantes, pour vous éviter la lecture de toutes ces pages.</p>
+<p><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String">String | Chaine de caractère</a></p>
+<p><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array">Array | Liste</a></p>
+<p><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Booléen | Vrai ou faux</a></p>
+<p><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Date">Date</a> : cet objet n'a pas été vu dans ce cours, mais voici des <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Date#exemples">&gt;exemles&lt;</a> sur la même page.</p>
+<p><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></p>
+<p><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/JSON">JSON</a> : Si je devais basiquement définir le JSON, c'est une liste ou un dictionnaire, à la différence qu'il existe des fichiers .json, qui vont du coup stoquer de la donnée hors d'un script.</p>
+<p><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Math">Math</a></p>
+<p><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></p>
+<p><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></p>
+<p><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise | Tout le système de promesse</a> : Dans un avenir incertain mais promis, j'ai prévu un cours sur le sujet de l'asynchrone, les promesses seront de la partie.</p>
+<p><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/RegExp">RegExp</a> : Pratique à l'excès.</p>
+<p><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Symbol">Symbol</a> : Pratique à l'excès.</p>
 
 </body>
 </html>

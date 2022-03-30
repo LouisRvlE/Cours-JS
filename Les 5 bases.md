@@ -3,17 +3,22 @@
 
 ### Sommaire
 1) [Les variables](#1-les-variables) <br>
-  a. [Assigniations des variables](#assigniations-des-variables) <br>
+  [Assigniations des variables](#assigniations-des-variables) <br>
+  a. [Chaine de caractère](#a-les-chaînes-de-caratère) <br>
   b. [Les chiffres](#b-les-chiffres) <br>
   c. [Les booléens](#c-les-booléens) <br>
   d. [Les listes](#d-les-listes) <br>
   e. [Les dictionnaires](#e-les-dictionnaires) <br>
   f. [Les données nulles](#f-les-données-nulles) <br>
 2) [Les conditions ](#2-les-conditions) <br>
+  [If, Else, Else if](#if-else-else-if)
+  [Le Switch](#le-switch)
 3) [La lecture et l'écriture](#3-la-lecture-et-lécriture) <br>
   [La lecture](#la-lecture) <br>
   [L'écriture](#lécriture) <br>
 4) [Les boucles](#4-les-boucles) <br>
+  [Tant que](#les-boucles-tant-que) <br>
+  [Pour](#les-boucles-pour) <br>
 5) [Les fonctions](#5-les-fonctions) <br>
   [Définition](#définition) <br>
   [Héritage et ``this``](#héritage-et-this)
@@ -106,10 +111,11 @@ Contre-exemple : Les composants en React ont des noms qui commencent par des maj
 
 #### a. Les chaînes de caratère
 
-Une chaîne de caractères et simplement une suite de caractères, entourés de doubles quotes et de simple quote (``' '`` ou ``" "``).
+Une chaîne de caractères et simplement une suite de caractères, entourés de doubles quotes " " et de simple quote ' ' ou d'accent grave \` \`.
 ```js
 let chaine1 = 'Exemple 1'
 let chaine2 = "Exemple 2"
+let chaine3 = `Exemple 2`
 ```
 
 Que faire si je veux utiliser une apostrophe ou des parenthèses ?
@@ -131,6 +137,14 @@ console.log(chaine1 + chaine2 + chaine3 + "fin")
 
 Il n'est pas contre évidement pas possible de multiplier, soustraire ou diviser une chaine de caractères.
 
+On peut par contre intégrer des variable dans une chaîne de caractère autrement qu'en les addiotionnant, avec les littéraux de gabarits :
+```js
+let firstName = 'Pierre'
+let lastName = 'Abés'
+console.log(`Bonjour à toi cher ${firstName} ${lastName}`)
+```
+Cependant, il faut obligatoirement utiliser des accents grâve pour utiliser les littéraux de gabarits.
+
 #### b. Les chiffres
 
 ```js
@@ -143,7 +157,7 @@ let chiffre3 = 10 + 5 + (1.3 * 10) - (14 / 2)
 // Ou dans une modification
 chiffre3 = 10 + 2
 chiffre3 = chiffre3 + 2
-// Il est possible de faire des opérations comme ceci :
+// Il est possible de faire des opérations comme ceci, avec les opérateurs d'expression :
 chiffre3 += 10
 chiffre3 -= 10
 chiffre3 /= 10
@@ -174,6 +188,7 @@ Les opérateurs logiques (déjà vu en maths) :
 ``||`` : ou, un des deux au minimum doit être vrai
 ``<``, ``>`` : inférieur, supérieur
 ``<=``, ``>=`` : inférieur ou égal, supérieur ou égal
+``!`` : inverse
 
 
 ```js
@@ -183,6 +198,7 @@ let bool3 = 10 !== 12 // => vrai
 let bool4 = bool && bool3 // => vrai
 let bool5 = bool || bool2 // => vrai
 let bool6 = (false && true) || (bool3 || (bool2 && true)) // => vrai
+let bool7 = !(false && true) || (bool3 || (bool2 && true)) // => faux
 ```
 
 #### d. Les listes
@@ -195,6 +211,17 @@ console.log(liste[0]) // = Oui
 // L'élement 3 est une liste, mais elle n'agit pas comme une extension de la liste, c'est un élement en lui même
 console.log(liste[3]) // = [3, 'Non', false]
 console.log(liste[3][1]) // = Non
+```
+
+On peut additionner les listes en utilisant la syntaxe de décomposition :
+```js
+let l1 = [1, 2, 3]
+let l2 = [4, 5, 6]
+// Crée une liste avec deux sous-listes
+console.log([l1, l2]) // => [ [ 1, 2, 3 ], [ 4, 5, 6 ] ]
+// Crée une liste composée de deux listes décomposées
+console.log([...l1, ...l2]) // => [ 1, 2, 3, 4, 5, 6 ]
+
 ```
 
 #### e. Les dictionnaires
@@ -228,6 +255,27 @@ console.log(dict.hello)
 
 Je reparlerai des élements hérités quand je parlerais des [fonctions](#5-les-fonctions).
 
+La syntaxe de décomposition peut aussi être utilisée ici :
+```js
+let d1 = {
+    Bonjour:'Aurevoir',
+    Salut:'Salut',
+}
+let d2 = {
+    Salut:'Saluut',
+    Hey:'Bye'
+}
+// Crée un dictionnaire avec deux sous-dictionnaires
+console.log({d1, d2}) /* =>
+{
+  d1: { Bonjour: 'Aurevoir', Salut: 'Salut' },
+  d2: { Salut: 'Saluut', Hey: 'Bye' }
+}
+*/
+// Crée un dictionnaire composé de deux dictionnaires décomposés
+console.log({...d1, ...d2}) // => { Bonjour: 'Aurevoir', Salut: 'Saluut', Hey: 'Bye' }
+```
+
 #### f. Les données nulles.
 
 ```js
@@ -239,6 +287,8 @@ let c = NaN // Not a number
 
 ### 2. Les conditions
 [▲](#sommaire)
+
+#### If, Else, Else if
 
 ``if``, ``else`` et ``else if`` sont les trois instructions de cette partie, respectivement en français : "si", "sinon", et "sinon si".
 Un bloc ``if`` ne va s'executer que **si** une **condition** booléenne est remplie.
@@ -268,6 +318,39 @@ if (false) console.log('là')
 else if (true) console.log('ici')
 else console.log('par ici')
 // => ici
+```
+
+#### Le switch
+
+L'instruction ``switch`` permet d'effectuer une action en fonction d'un cas précis.
+Dans l'exemle suivant, en fonction de la couleur choisis, l'algorithme donne un avis précis.
+
+```js
+const colorList = [
+    'bleu',
+    'rouge',
+    'vert',
+    'orange'
+]
+
+const swithCase = (theCase) => {
+    switch (theCase) {
+      case 'rouge':
+        console.log('Ah j\'aime bien le rouge');
+        break;
+      case 'vert':
+      case 'orange':
+        console.log('Cette couleur n\'est pas spécialement dans mon cœur');
+        break;
+      default:
+        console.log(`C'est quoi le ${theCase} ?`);
+    }
+}
+
+swithCase(colorList[0]) // => C'est quoi le bleu ?
+swithCase(colorList[1]) // => Ah j'aime bien le rouge
+swithCase(colorList[2]) // => Cette couleur n'est pas spécialement dans mon cœur
+swithCase(colorList[3]) // => Cette couleur n'est pas spécialement dans mon cœur
 ```
 
 ### 3. La lecture et l'écriture
@@ -412,7 +495,7 @@ Petit exemple pour comprendre la différence :
 Si un politique dit "**Pour** 150 Millions de chomeurs, je vais créer 150 Millions d'emplois". La limite est bien définie, c'est comme une boucle qui va s'effectuer 150 Millions de fois, et qui va à chaque fois créer un emplois. La boucle à une fin.
 Si un politique dit "**Tant** qu'il y aura des chomeurs, je vais créer des emplois". La boucle peut s'effectuer à l'infini, car la limite n'est pas définie.
 
-Les boucles Tant que :
+#### Les boucles Tant que :
 ```js
 while (/*condition*/) {
   // Code de la boucle
@@ -457,7 +540,22 @@ j : 0
 // j n'est plus supérieur à 0
 ```
 
-Les boucles Pour
+Il existe une dernière manière de faire une boucle Tant que, avec l'instruction `do...while` :
+"L'instruction ``do...while`` crée une boucle qui exécute une instruction jusqu'à ce qu'une condition de test ne soit plus vérifiée. La condition est testée après que l'instruction soit exécutée, le bloc d'instructions défini dans la boucle est donc exécuté au moins une fois."
+```js
+let result = '';
+let i = 0;
+
+do {
+  i = i + 1;
+  result = result + i;
+} while (i < 5);
+
+console.log(result) // => "12345"
+```
+[(source)](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Statements/do...while)
+
+#### Les boucles Pour
 ```js
 for (/*'variable de départ'*/; /*'condition de fonctionnement'*/; /*'expression de fin de boucle'*/) {
   // Code de la boucle
@@ -510,6 +608,33 @@ En appliquant la même logique qu'avec les ``if``, nous pouvons utiliser une bou
 ```js
 for (let el of ['One', 'Two', 'Three']) console.log(el);
 ``` 
+
+Il est possible de stopper une boucle de différentes manières :
+``break`` : arrête complètement la boucle
+```js
+let i = 0
+
+while (i < 6) {
+  if (i === 3) {
+    break
+  }
+  i = i + 1
+}
+console.log(i) // => 3
+```
+``continue``: passe à l'itération suivante
+```js
+let text = ''
+
+for (let i = 0; i < 10; i++) {
+  if (i === 3) {
+    continue
+  }
+  text = text + i
+}
+
+console.log(text) // => 012456789
+```
 
 
 ### 5. Les fonctions
@@ -597,7 +722,8 @@ console.log(testing()) // => Hello 13
 ```
 Tout ce qui était après ``return`` ne s'est pas executé.
 
-Voici un exemple d'utilisation partique :
+La syntaxe de décomposition s'utilise aussi dans les fonctions. 
+Voici un exemple d'utilisation partique avec les différents élements cités :
 ```js
 function inverse(a, b, c, d) {
     let det = a*d-b*c
@@ -612,8 +738,11 @@ function inverse(a, b, c, d) {
   }
   
 console.log(inverse(1, 2, 3, 4)) // => [ 'Valide', [ [ -2, 1 ], [ 1.5, -0.5 ] ] ]
-console.log(testing(1, 4, 0.5, 2)) // => [ 'Invalide', [] ]
+console.log(inverse(1, 4, 0.5, 2)) // => [ 'Invalide', [] ]
 
+// Récupérons d'une variable en décomposant...
+let matrice = [[1, 2], [3, 4]]
+console.log(inverse(...[...matrice[0], ...matrice[1]])) // => [ 'Valide', [ [ -2, 1 ], [ 1.5, -0.5 ] ] ]
 ```
 
 À des fins de précisions, il est tout à fait possible d'avoir une fonction qui fait un retour sans arguments. Il y a en fait quatre cas de figure :
@@ -728,7 +857,9 @@ dict.one() // oui
 dict.inner.func() // non
 ```
 
-Afin de finir sur les fonctions voici une liste de lien contenant toutes les méthodes des différents Objets standards :
+Le cours se finit ici. Une grande partie des bases à connaîtres ont été noté dans ce document, qui est voué à évoluer. Je suis conscient d'avoir oublié des tas de choses dans la rédaction de ce cours.
+
+Afin de compléter un peu le cours, voici une liste de lien contenant toutes les méthodes de différents Objets standards choisis de manière non exaustive. Tout ces liens proviennent de [la page de documentation JavaScript de Mozilla.org](https://developer.mozilla.org/fr/docs/Web/JavaScript). Je vous conseille d'y jeter un œil afin de connaître en profondeurs les objets en JS. Je ferais dans le futur un cours contenant les méthodes les plus courantes, pour vous éviter la lecture de toutes ces pages.
 
 [String | Chaine de caractère](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String)
 
@@ -738,8 +869,19 @@ Afin de finir sur les fonctions voici une liste de lien contenant toutes les mé
 
 [Date](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Date) : cet objet n'a pas été vu dans ce cours, mais voici des [>exemles<](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Date#exemples) sur la même page.
 
-[String | Chaine de caractère](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String)
+[Function](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Function)
 
-[String | Chaine de caractère](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String)
+[JSON](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/JSON) : Si je devais basiquement définir le JSON, c'est une liste ou un dictionnaire, à la différence qu'il existe des fichiers .json, qui vont du coup stoquer de la donnée hors d'un script.
 
-[String | Chaine de caractère](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String)
+[Math](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Math)
+
+[Number](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Number)
+
+[Object](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Object)
+
+[Promise | Tout le système de promesse](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Promise) : Dans un avenir incertain mais promis, j'ai prévu un cours sur le sujet de l'asynchrone, les promesses seront de la partie. 
+
+[RegExp](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/RegExp) : Pratique à l'excès.
+
+[Symbol](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Symbol) : Pratique à l'excès.
+
