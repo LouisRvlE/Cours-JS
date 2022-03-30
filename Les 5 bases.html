@@ -380,7 +380,7 @@ code {
 }
 
 </style>
-<link rel="stylesheet" href="file:///c%3A/Users/louis/Documents/prog/cours/.style.css" type="text/css">
+<link rel="stylesheet" href="file:///c%3A/Users/louis/Documents/prog/coursJs/.style.css" type="text/css">
 <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
 </head>
 <body>
@@ -413,8 +413,11 @@ f. <a href="#f-les-donn%C3%A9es-nulles">Les données nulles</a> <br></li>
 <p>Clique sur le bouton ▲ pour revenir au sommaire.</p>
 <h3 id="1-les-variables">1. Les variables</h3>
 <p><a href="#sommaire">▲</a></p>
+<p>Avant de débuter, qu'est-ce qu'une variable ?
+Et bien c'est un contenaire, dans lequel on peut stocker n'importe quel objet, pouvant être modifié (si ce n'est pas une constante). Mais dans le cas du JS, qu'est-ce qu'un objet ? Absolument tout. Que ce soit une chaîne de caractère, un nombre, un booléen, une liste, un dictionnaire... ou même une fonction, tout est un objet.</p>
 <h4 id="assigniations-des-variables">Assigniations des variables</h4>
-<p>Pour créer une variable, il faut l'instancier avec une des trois instructions : <code>var</code>, <code>let</code> ou <code>const</code>.</p>
+<p>Pour créer une variable, il faut l'instancier avec une des trois instructions : <code>var</code>, <code>let</code> ou <code>const</code>, avec cette syntaxe :
+<code>&lt;inscruction&gt;</code> <code>&lt;clé&gt;</code> = <code>&lt;valeur&gt;</code></p>
 <pre class="hljs"><code><div><span class="hljs-keyword">var</span> variableGlobale = <span class="hljs-string">'exemple'</span>;
 <span class="hljs-keyword">let</span> variableCourante = <span class="hljs-string">'exemple'</span>;
 <span class="hljs-keyword">const</span> constanteGlobale = <span class="hljs-string">'exemple'</span>;
@@ -468,7 +471,7 @@ x = <span class="hljs-number">2</span>; <span class="hljs-comment">// ERREUR : x
 }
 </div></code></pre>
 <p>Je déconseille fortement d'utiliser l'instruction <code>var</code>.
-Dans le cas du développemment web, l'algorithme ne s'execute pas de manière séquencielle : On ne sait pas à quelle moment l'utilisateur va faire telle ou telle action. Le code peut s'executer de manière un peu aléatoire, il est donc préférable d'utiliser des variables courantes (avec <code>let</code>). Je reparlerai de ce concepte quand j'aborderai les fonctions.</p>
+Dans le cas du développemment web, l'algorithme ne s'execute pas de manière séquencielle : On ne sait pas à quelle moment l'utilisateur va faire telle ou telle action. Le code peut s'executer de manière un peu aléatoire, il est donc préférable d'utiliser des variables courantes (avec <code>let</code>).</p>
 <p>Une variable ne doit être défini que par des caractères simple. Les lettres de a à z. Il est possible de mettre des majuscules, mais il est d'usage de commencer par une minuscule.</p>
 <pre class="hljs"><code><div><span class="hljs-keyword">let</span> pommeDeTerre;
 </div></code></pre>
@@ -567,7 +570,7 @@ a += <span class="hljs-string">' à toi'</span>
 <pre class="hljs"><code><div><span class="hljs-comment">// Pour le cas des chaines de caractère, il est possible de récupérer la variable de cette manière</span>
 <span class="hljs-built_in">console</span>.log(dict.hello)
 </div></code></pre>
-<p>Je reparlerai des élements hérités quand je parlerais des fonctions.</p>
+<p>Je reparlerai des élements hérités quand je parlerais des <a href="#5-les-fonctions">fonctions</a>.</p>
 <h4 id="f-les-donn%C3%A9es-nulles">f. Les données nulles.</h4>
 <pre class="hljs"><code><div><span class="hljs-keyword">let</span> a = <span class="hljs-literal">null</span>
 <span class="hljs-keyword">let</span> b = <span class="hljs-literal">undefined</span>
@@ -576,7 +579,31 @@ a += <span class="hljs-string">' à toi'</span>
 </div></code></pre>
 <h3 id="2-les-conditions">2. Les conditions</h3>
 <p><a href="#sommaire">▲</a></p>
-<p>Super partie sur les conditions à effectuer</p>
+<p><code>if</code>, <code>else</code> et <code>else if</code> sont les trois instructions de cette partie, respectivement en français : &quot;si&quot;, &quot;sinon&quot;, et &quot;sinon si&quot;.
+Un bloc <code>if</code> ne va s'executer que <strong>si</strong> une <strong>condition</strong> booléenne est remplie.
+Une condition booléenne est simplement une valeur booléenne, comme on a pu le voir dans <a href="#c-les-bool%C3%A9ens">&gt;cette partie&lt;</a>.
+On peut créer un bloc <code>else if</code> à la suite d'un bloc if, qui s'executera si le bloc <code>if</code> ne s'execute pas.
+Et à la suite d'un bloc <code>if</code> ou <code>else if</code>, il est possible d'inicier un bloc <code>else</code>, qui s'executera si aucune condition n'a été <code>true</code>.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">if</span> (<span class="hljs-comment">/*condition 1*/</span>) {
+  <span class="hljs-comment">// Code à executer si la condition 1 est vrai</span>
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-comment">/*condition 2*/</span>) {
+  <span class="hljs-comment">// Code à executer si la condition 1 est fausse mais que la condition 2 est vrai</span>
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-comment">// Code à executer si aucune des condition n'est vrai</span>
+}
+</div></code></pre>
+<p>Il est possible de mettre une infinité <code>else if</code>.</p>
+<p>On peut aussi écrire une condition <code>if</code> sans pour autant créer de bloc entier, si on ne veut mettre qu'une seule expression :</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">let</span> x = <span class="hljs-number">12</span>;
+<span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">13</span>) x += <span class="hljs-number">24</span>;
+<span class="hljs-built_in">console</span>.log(x) <span class="hljs-comment">// =&gt; 36</span>
+</div></code></pre>
+<p>On peut appliquer cette logique à toute la chaine d'instruction :</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">if</span> (<span class="hljs-literal">false</span>) <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'là'</span>)
+<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>) <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'ici'</span>)
+<span class="hljs-keyword">else</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'par ici'</span>)
+<span class="hljs-comment">// =&gt; ici</span>
+</div></code></pre>
 <h3 id="3-la-lecture-et-l%C3%A9criture">3. La lecture et l'écriture</h3>
 <p><a href="#sommaire">▲</a></p>
 <h4 id="la-lecture">La lecture</h4>
@@ -759,9 +786,174 @@ j : 0
 4
 */</span>
 </div></code></pre>
-<p>J'ai pas finis</p>
+<p>Avec la boucle Pour, on peut par ailleurs parcourir une liste, avec 2 mots clés différents :
+<code>in</code>, qui va renvoyer à chaque itération de la boucle l'index auquel on se trouve,
+et <code>of</code> qui lui va renvoyer les valeurs.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">let</span> liste = [<span class="hljs-string">'Bonjour'</span>, <span class="hljs-string">'Salut'</span>, <span class="hljs-string">'Hey'</span>]
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> el <span class="hljs-keyword">of</span> liste) {
+  <span class="hljs-built_in">console</span>.log(el)
+}
+<span class="hljs-comment">// Résultat</span>
+<span class="hljs-comment">/*
+Bonjour
+Salut
+Hey
+*/</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i <span class="hljs-keyword">in</span> liste) {
+  <span class="hljs-built_in">console</span>.log(i)
+}
+<span class="hljs-comment">// Résultat</span>
+<span class="hljs-comment">/*
+0
+1
+2
+*/</span>
+</div></code></pre>
+<p>Je rappelle qu'il est possible de retrouver l'élement si on a l'index (<code>liste[i] = el</code>).</p>
+<p>En appliquant la même logique qu'avec les <code>if</code>, nous pouvons utiliser une boucle Pour sans bloc :</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> el <span class="hljs-keyword">of</span> [<span class="hljs-string">'One'</span>, <span class="hljs-string">'Two'</span>, <span class="hljs-string">'Three'</span>]) <span class="hljs-built_in">console</span>.log(el);
+</div></code></pre>
 <h3 id="5-les-fonctions">5. Les fonctions</h3>
 <p><a href="#sommaire">▲</a></p>
+<p>On dit d'une fonction qu'elle est définie, et qu'elle peut être appelée.
+La définition de la fonction correspond aux actions qui vont être executées quand elle va être appelée.
+Une définition seule ne va rien produire.</p>
+<p>Il y a trois manière de définir une fonction :</p>
+<pre class="hljs"><code><div><span class="hljs-comment">/*
+function nomDeLaFonction(arguments) {
+  code executé à l'appel de la fonction
+}
+*/</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ditBonjour</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Bonjour'</span>)
+}
+ditBonjour() <span class="hljs-comment">// =&gt; Bonjour</span>
+</div></code></pre>
+<p>ou la version &quot;stockage&quot;</p>
+<pre class="hljs"><code><div><span class="hljs-comment">/*
+const nomDeLaFonction = (arguments) =&gt; {
+  code executé à l'appel de la fonction
+}
+*/</span>
+<span class="hljs-keyword">const</span> ditBonjour = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Bonjour'</span>)
+}
+ditBonjour() <span class="hljs-comment">// =&gt; Bonjour</span>
+</div></code></pre>
+<p>ou la version &quot;function fléchée&quot;</p>
+<pre class="hljs"><code><div><span class="hljs-comment">/*
+const nomDeLaFonction = (arguments) =&gt; {
+  code executé à l'appel de la fonction
+}
+*/</span>
+<span class="hljs-keyword">const</span> ditBonjour = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Bonjour'</span>)
+}
+ditBonjour() <span class="hljs-comment">// =&gt; Bonjour</span>
+</div></code></pre>
+<p>Ces deux denières méthode sont intéressantes, car elles impliquent et rappellent un élement fondamental de JS, qui est que tout un est un objet.
+<code>() =&gt; {}</code> et <code>function() {}</code> sont des fonctions, et dans les cas présentés au dessus, on stocke ces fonctions dans la constante <code>ditBonjour</code>, ce qui nous permettra de les executer à l'avenir.
+Attention il y a cependant une différence entre une fonction fléchée (<code>() =&gt; {}</code>) et une fonction traditionnelle (<code>function name() {}</code> ou <code>function() {}</code>) :
+Outre la syntaxe plus courte, la fonction fléchée ne transmet pas this (présenté ultérierement).</p>
+<p>Pour continuer dans la définition on peut aussi donner des arguments à une fonction :</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ditMoiBonjour</span>(<span class="hljs-params">nom</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Bonjour '</span> + nom)
+}
+ditBonjour(<span class="hljs-string">'Pierre'</span>) <span class="hljs-comment">// =&gt; Bonjour Pierre</span>
+</div></code></pre>
+<p>Jusqu'alors, nos fonctions envoyais quelque chose dans la console, une fonction peut aussi renvoyer une information, à stocker dans une variable :</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">monNomAlenvers</span>(<span class="hljs-params">nom</span>) </span>{
+  <span class="hljs-keyword">let</span> mon = <span class="hljs-string">''</span>
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> letter <span class="hljs-keyword">of</span> nom) {
+    mon = letter + mon
+  }
+  <span class="hljs-keyword">return</span> mon
+}
+<span class="hljs-keyword">let</span> result = monNomAlenvers(<span class="hljs-string">'Pierre'</span>)
+<span class="hljs-built_in">console</span>.log(result) <span class="hljs-comment">// =&gt; erreiP</span>
+</div></code></pre>
+<p>Le mot clé <code>return</code> renvoie ce qui est derrière, et nous le stockons dans une variable que nous avons sobrement appelé result.
+Ce mot clé arrête d'ailleurs l'execution de la fonction :</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testing</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">let</span> i = <span class="hljs-number">13</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-string">'Hello '</span> + i
+  i += <span class="hljs-number">13</span>
+  <span class="hljs-built_in">console</span>.log(i)
+}
+<span class="hljs-built_in">console</span>.log(testing()) <span class="hljs-comment">// =&gt; Hello 13</span>
+</div></code></pre>
+<p>Tout ce qui était après <code>return</code> ne s'est pas executé.</p>
+<p>Voici un exemple d'utilisation partique :</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inverse</span>(<span class="hljs-params">a, b, c, d</span>) </span>{
+    <span class="hljs-keyword">let</span> det = a*d-b*c
+    <span class="hljs-keyword">if</span> (det === <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> [<span class="hljs-string">'Invalide'</span>, []]
+    
+    <span class="hljs-keyword">let</span> matrice = [
+      [d*(<span class="hljs-number">1</span>/det), -b*(<span class="hljs-number">1</span>/det)],
+      [-c*(<span class="hljs-number">1</span>/det), a*(<span class="hljs-number">1</span>/det)]
+    ]
+  
+    <span class="hljs-keyword">return</span> [<span class="hljs-string">'Valide'</span>, matrice]
+  }
+  
+<span class="hljs-built_in">console</span>.log(inverse(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>)) <span class="hljs-comment">// =&gt; [ 'Valide', [ [ -2, 1 ], [ 1.5, -0.5 ] ] ]</span>
+<span class="hljs-built_in">console</span>.log(testing(<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">0.5</span>, <span class="hljs-number">2</span>)) <span class="hljs-comment">// =&gt; [ 'Invalide', [] ]</span>
+
+</div></code></pre>
+<p>À des fins de précisions, il est tout à fait possible d'avoir une fonction qui fait un retour sans arguments. Il y a en fait quatre cas de figure :</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Avec retour</th>
+<th>Sans retour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Avec argument</td>
+<td><code>let result = func(13)</code></td>
+<td><code>func(13)</code></td>
+</tr>
+<tr>
+<td>Sans argument</td>
+<td><code>let result = func()</code></td>
+<td><code>func()</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="les-%C3%A9lements-h%C3%A9rit%C3%A9s-et-this">Les élements hérités et <code>this</code></h4>
+<p>Nous pouvons stocker nos fonctions, comme tout objet, dans des variables, mais aussi dans des liste, ou des dictionnaire, à côtés d'autres valeurs :</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> list = [
+    <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'one'</span>)
+    },
+    (two) =&gt; {
+        <span class="hljs-built_in">console</span>.log(two)
+    },
+    <span class="hljs-string">'hello'</span>
+]
+
+list[<span class="hljs-number">0</span>]()
+list[<span class="hljs-number">1</span>](<span class="hljs-string">'Salut'</span>)
+list[<span class="hljs-number">1</span>](list[<span class="hljs-number">2</span>])
+</div></code></pre>
+<p>Nous trouvons d'ailleurs un nouveau mot clé : <code>this</code>, qui fait référence à l'objet dans lequel se trouve la fonction.
+Poour rappelle, ce mot clé n'est transmis qu'avec les fonctions traditionnelles (<code>function name() {}</code> ou <code>function() {}</code>), et pas dans une fonction fléchée (<code>() =&gt; {}</code>).</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> dict = {
+    <span class="hljs-attr">one</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.salut)
+    },
+    <span class="hljs-attr">salut</span>:<span class="hljs-string">'oui'</span>
+}
+
+dict.one() <span class="hljs-comment">// =&gt; oui</span>
+</div></code></pre>
+<p>Ici <code>this</code> correspond au dictionnaire <code>dict</code>, donc <code>this.salut</code> correspond à <code>dict.salut</code>.
+Dans le cas ou une fonction est directement à la racine d'un fichier (ou imbriquée dans une autre fonction), this correspondra à l'objet global</p>
+<p>&quot;Qu'est-ce qu'un objet global en JavaScript ?</p>
+<p>L'objet global en JavaScript est un objet toujours défini qui fournit des variables et des fonctions, et est disponible n'importe où. Dans un navigateur Web, l'objet global est l'objet window, alors qu'il est nommé global dans Node.js. L'objet global est accessible à l'aide de l'opérateur this dans la portée globale.&quot; <a href="https://www.contentful.com/blog/2017/01/17/the-global-object-in-javascript/#:~:text=The%20global%20object%20in%20JavaScript%20is%20an%20always%20defined%20object,operator%20in%20the%20global%20scope.">(source)</a></p>
+<p>Les elements hérités</p>
 
 </body>
 </html>

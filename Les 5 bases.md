@@ -21,9 +21,13 @@ Clique sur le bouton ▲ pour revenir au sommaire.
 ### 1. Les variables
 [▲](#sommaire)
 
+Avant de débuter, qu'est-ce qu'une variable ?
+Et bien c'est un contenaire, dans lequel on peut stocker n'importe quel objet, pouvant être modifié (si ce n'est pas une constante). Mais dans le cas du JS, qu'est-ce qu'un objet ? Absolument tout. Que ce soit une chaîne de caractère, un nombre, un booléen, une liste, un dictionnaire... ou même une fonction, tout est un objet.
+
 #### Assigniations des variables
 
-Pour créer une variable, il faut l'instancier avec une des trois instructions : ``var``, ``let`` ou ``const``.
+Pour créer une variable, il faut l'instancier avec une des trois instructions : ``var``, ``let`` ou ``const``, avec cette syntaxe :
+``<inscruction>`` ``<clé>`` = ``<valeur>``
 ```js
 var variableGlobale = 'exemple';
 let variableCourante = 'exemple';
@@ -90,7 +94,7 @@ x = 2; // ERREUR : x est une constante.
 ```
 
 Je déconseille fortement d'utiliser l'instruction ``var``.
-Dans le cas du développemment web, l'algorithme ne s'execute pas de manière séquencielle : On ne sait pas à quelle moment l'utilisateur va faire telle ou telle action. Le code peut s'executer de manière un peu aléatoire, il est donc préférable d'utiliser des variables courantes (avec ``let``). Je reparlerai de ce concepte quand j'aborderai les fonctions.
+Dans le cas du développemment web, l'algorithme ne s'execute pas de manière séquencielle : On ne sait pas à quelle moment l'utilisateur va faire telle ou telle action. Le code peut s'executer de manière un peu aléatoire, il est donc préférable d'utiliser des variables courantes (avec ``let``).
 
 Une variable ne doit être défini que par des caractères simple. Les lettres de a à z. Il est possible de mettre des majuscules, mais il est d'usage de commencer par une minuscule.
 ```js
@@ -220,7 +224,7 @@ On considère que chaque élement d'un dictionnaire est un variable héritée de
 console.log(dict.hello)
 ```
 
-Je reparlerai des élements hérités quand je parlerais des fonctions.
+Je reparlerai des élements hérités quand je parlerais des [fonctions](#5-les-fonctions).
 
 #### f. Les données nulles.
 
@@ -473,24 +477,239 @@ for (let i = 0; i < 5; i++) {
 */
 ```
 
-Avec la boucle Pour, on peut par ailleurs parcourir une liste,
-avec 2 mots clés différents.
-```mermaid
-flowchart LR;
-    in-->index;
-    of-->valeurs;
-```
+Avec la boucle Pour, on peut par ailleurs parcourir une liste, avec 2 mots clés différents :
+``in``, qui va renvoyer à chaque itération de la boucle l'index auquel on se trouve,
+et ``of`` qui lui va renvoyer les valeurs.
 ```js
 let liste = ['Bonjour', 'Salut', 'Hey']
 for (let el of liste) {
   console.log(el)
 }
-for (let el in liste) {
-  console.log(el)
+// Résultat
+/*
+Bonjour
+Salut
+Hey
+*/
+for (let i in liste) {
+  console.log(i)
 }
+// Résultat
+/*
+0
+1
+2
+*/
 ```
 
-J'ai pas finis
+Je rappelle qu'il est possible de retrouver l'élement si on a l'index (``liste[i] = el``).
+
+En appliquant la même logique qu'avec les ``if``, nous pouvons utiliser une boucle Pour sans bloc :
+```js
+for (let el of ['One', 'Two', 'Three']) console.log(el);
+``` 
+
 
 ### 5. Les fonctions
 [▲](#sommaire)
+
+On dit d'une fonction qu'elle est définie, et qu'elle peut être appelée.
+La définition de la fonction correspond aux actions qui vont être executées quand elle va être appelée.
+Une définition seule ne va rien produire.
+
+Il y a trois manière de définir une fonction :
+```js
+/*
+function nomDeLaFonction(arguments) {
+  code executé à l'appel de la fonction
+}
+*/
+function ditBonjour() {
+  console.log('Bonjour')
+}
+ditBonjour() // => Bonjour
+```
+ou la version "stockage"
+```js
+/*
+const nomDeLaFonction = (arguments) => {
+  code executé à l'appel de la fonction
+}
+*/
+const ditBonjour = function() {
+  console.log('Bonjour')
+}
+ditBonjour() // => Bonjour
+```
+ou la version "function fléchée"
+```js
+/*
+const nomDeLaFonction = (arguments) => {
+  code executé à l'appel de la fonction
+}
+*/
+const ditBonjour = () => {
+  console.log('Bonjour')
+}
+ditBonjour() // => Bonjour
+```
+
+Ces deux denières méthode sont intéressantes, car elles impliquent et rappellent un élement fondamental de JS, qui est que tout un est un objet.
+``() => {}`` et ``function() {}`` sont des fonctions, et dans les cas présentés au dessus, on stocke ces fonctions dans la constante ``ditBonjour``, ce qui nous permettra de les executer à l'avenir.
+Attention il y a cependant une différence entre une fonction fléchée (``() => {}``) et une fonction traditionnelle (``function name() {}`` ou ``function() {}``) :
+Outre la syntaxe plus courte, la fonction fléchée ne transmet pas this (présenté ultérierement).
+
+Pour continuer dans la définition on peut aussi donner des arguments à une fonction :
+```js
+function ditMoiBonjour(nom) {
+  console.log('Bonjour ' + nom)
+}
+ditBonjour('Pierre') // => Bonjour Pierre
+```
+
+Jusqu'alors, nos fonctions envoyais quelque chose dans la console, une fonction peut aussi renvoyer une information, à stocker dans une variable :
+
+```js
+function monNomAlenvers(nom) {
+  let mon = ''
+  for (let letter of nom) {
+    mon = letter + mon
+  }
+  return mon
+}
+let result = monNomAlenvers('Pierre')
+console.log(result) // => erreiP
+```
+Le mot clé `return` renvoie ce qui est derrière, et nous le stockons dans une variable que nous avons sobrement appelé result.
+Ce mot clé arrête d'ailleurs l'execution de la fonction :
+```js
+function testing() {
+  let i = 13
+  return 'Hello ' + i
+  i += 13
+  console.log(i)
+}
+console.log(testing()) // => Hello 13
+```
+Tout ce qui était après ``return`` ne s'est pas executé.
+
+Voici un exemple d'utilisation partique :
+```js
+function inverse(a, b, c, d) {
+    let det = a*d-b*c
+    if (det === 0) return ['Invalide', []]
+    
+    let matrice = [
+      [d*(1/det), -b*(1/det)],
+      [-c*(1/det), a*(1/det)]
+    ]
+  
+    return ['Valide', matrice]
+  }
+  
+console.log(inverse(1, 2, 3, 4)) // => [ 'Valide', [ [ -2, 1 ], [ 1.5, -0.5 ] ] ]
+console.log(testing(1, 4, 0.5, 2)) // => [ 'Invalide', [] ]
+
+```
+
+À des fins de précisions, il est tout à fait possible d'avoir une fonction qui fait un retour sans arguments. Il y a en fait quatre cas de figure :
+
+|               | Avec retour               | Sans retour  |
+|---------------|---------------------------|--------------|
+| Avec argument | ``let result = func(13)`` | ``func(13)`` |
+| Sans argument | ``let result = func()``   | ``func()``   |
+
+#### Les élements hérités et ``this``
+
+Nous pouvons stocker nos fonctions, comme tout objet, dans des variables, mais aussi dans des liste, ou des dictionnaire, à côtés d'autres valeurs :
+```js
+const list = [
+    () => {
+        console.log('one')
+    },
+    (two) => {
+        console.log(two)
+    },
+    'hello'
+]
+
+list[0]()
+list[1]('Salut')
+list[1](list[2])
+```
+
+Ces fonctions sont considérées comme des fonctions héritées de l'objet liste, des méthodes de liste.
+Cet exemple permet de mieux intégrer des concepts comme ceux des méthodes de la ``console`` ou de l'objet `Math`.
+Les fonctions ``log()`` et ``table()`` sont des méthodes hérités de l'objet ``console``, et les fonctions ``floor()`` et ``random()`` sont des méthodes hérités de l'objet ``Math``.
+Pour aller encore plus loin, définisson ce qu'est un prototype, avec un exemple :
+Le prototype de ``String``, d'une chaîne de caractère est un objet auquel on a attaché des méthodes, tel que ``replace()``, ou encore ``trim()``. Chaque chaîne de caractère obtient toutes ces mêmes méthodes.
+```js
+console.log('Salut les copains'.replace('copains', 'amis')) // Salut les amis
+```
+En conséquence, nous pouvons y attacher de nouvelles méthodes (attention à ne pas utiliser un nom de fonction déjà existante) :
+
+```js
+String.prototype.why = function() {
+    // Obtenir une copie de ce qu'était la chaine de caractère
+    let str = this.valueOf();
+    // On y ajouter quelque chose
+    str = str + ' ?';
+    // Et on oublie pas de le renvoyer
+    return str
+}
+
+console.log('salut') // salut
+console.log('salut'.why()) // salut ?
+```
+Nous trouvons d'ailleurs un nouveau mot clé : `this`, qui fait référence à l'objet duquel on appel la fonction, l'objet qui hérite du prototype si la fonction y est attachée, ou simplement la liste ou le dictionnaire dans laquelle la fonction est stockée.
+Pour rappelle, ce mot clé n'est transmis qu'avec les fonctions traditionnelles (``function name() {}`` ou ``function() {}``), et pas dans une fonction fléchée (``() => {}``).
+Dans le cas ou une fonction est directement à la racine d'un fichier (ou imbriquée dans une autre fonction), this correspondra à l'objet global
+
+"Qu'est-ce qu'un objet global en JavaScript ?
+
+L'objet global en JavaScript est un objet toujours défini qui fournit des variables et des fonctions, et est disponible n'importe où. Dans un navigateur Web, l'objet global est l'objet window, alors qu'il est nommé global dans Node.js. L'objet global est accessible à l'aide de l'opérateur this dans la portée globale." [(source)](https://www.contentful.com/blog/2017/01/17/the-global-object-in-javascript/#:~:text=The%20global%20object%20in%20JavaScript%20is%20an%20always%20defined%20object,operator%20in%20the%20global%20scope.)
+```js
+Array.prototype.superPush = function(el) {
+    this.push(el)
+    return this
+}
+Object.prototype.sett = function(key, value) {
+    this[key] = value
+    return this
+}
+console.log([1].superPush(2)) // [ 1, 2 ]
+console.log({salut:1}.sett('hello', 2)) // { salut: 1, hello: 2 }
+```
+```js
+const dict = {
+    one: function() {
+        console.log(this.salut)
+        this.salut = 'non'
+    },
+    salut:'oui'
+}
+
+dict.one() // => oui
+dict.one() // => non
+```
+Ici `this` correspond au dictionnaire `dict`, donc `this.salut` correspond à `dict.salut`.
+Comme la fonction est attachée à l'objet et non pas au protoype ``Object.prototype`` (ou ``Array.protype`` dans le cas d'une liste), cette méthode ne sera hérité que de cette objet.
+
+Dans le cas du stockage d'une méthode dans une fonction, ```this`` fait référence au palier actuel, donc il renverra toujours le dictionnaire, ou la liste, dans lequel il est stocké :
+```js
+const dict = {
+    one: function() {
+        console.log(this.salut)
+    },
+    salut:'oui',
+    inner:{
+        func: function() {
+            console.log(this.salut)
+        },
+        salut:'non'
+    }
+}
+
+dict.one() // oui
+dict.inner.func() // non
+```
