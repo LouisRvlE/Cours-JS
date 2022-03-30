@@ -11,8 +11,8 @@
   e. [Les dictionnaires](#e-les-dictionnaires) <br>
   f. [Les données nulles](#f-les-données-nulles) <br>
 2) [Les conditions ](#2-les-conditions) <br>
-  [If, Else, Else if](#if-else-else-if)
-  [Le Switch](#le-switch)
+  [If, Else, Else if](#if-else-else-if) <br>
+  [Le Switch](#le-switch) <br>
 3) [La lecture et l'écriture](#3-la-lecture-et-lécriture) <br>
   [La lecture](#la-lecture) <br>
   [L'écriture](#lécriture) <br>
