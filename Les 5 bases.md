@@ -21,7 +21,6 @@ Clique sur le bouton ▲ pour revenir au sommaire.
 ### 1. Les variables
 [▲](#sommaire)
 
-
 #### Assigniations des variables
 
 Pour créer une variable, il faut l'instancier avec une des trois instructions : ``var``, ``let`` ou ``const``.
@@ -235,8 +234,35 @@ let c = NaN // Not a number
 ### 2. Les conditions
 [▲](#sommaire)
 
-Super partie sur les conditions à effectuer
+``if``, ``else`` et ``else if`` sont les trois instructions de cette partie, respectivement en français : "si", "sinon", et "sinon si".
+Un bloc ``if`` ne va s'executer que **si** une **condition** booléenne est remplie.
+Une condition booléenne est simplement une valeur booléenne, comme on a pu le voir dans [>cette partie<](#c-les-booléens).
+On peut créer un bloc ``else if`` à la suite d'un bloc if, qui s'executera si le bloc ``if`` ne s'execute pas.
+Et à la suite d'un bloc ``if`` ou ``else if``, il est possible d'inicier un bloc ``else``, qui s'executera si aucune condition n'a été `true`.
+```js
+if (/*condition 1*/) {
+  // Code à executer si la condition 1 est vrai
+} else if (/*condition 2*/) {
+  // Code à executer si la condition 1 est fausse mais que la condition 2 est vrai
+} else {
+  // Code à executer si aucune des condition n'est vrai
+}
+``` 
+Il est possible de mettre une infinité ``else if``.
 
+On peut aussi écrire une condition ``if`` sans pour autant créer de bloc entier, si on ne veut mettre qu'une seule expression :
+```js
+let x = 12;
+if (x < 13) x += 24;
+console.log(x) // => 36
+```
+On peut appliquer cette logique à toute la chaine d'instruction :
+```js
+if (false) console.log('là')
+else if (true) console.log('ici')
+else console.log('par ici')
+// => ici
+```
 
 ### 3. La lecture et l'écriture
 [▲](#sommaire)
@@ -445,6 +471,23 @@ for (let i = 0; i < 5; i++) {
 3
 4
 */
+```
+
+Avec la boucle Pour, on peut par ailleurs parcourir une liste,
+avec 2 mots clés différents.
+```mermaid
+flowchart LR;
+    in-->index;
+    of-->valeurs;
+```
+```js
+let liste = ['Bonjour', 'Salut', 'Hey']
+for (let el of liste) {
+  console.log(el)
+}
+for (let el in liste) {
+  console.log(el)
+}
 ```
 
 J'ai pas finis
