@@ -1,17 +1,17 @@
-function inverse(a, b, c, d) {
-    let det = a*d-b*c
-    if (det === 0) return ['Invalide', []]
-    
-    let matrice = [
-      [d*(1/det), -b*(1/det)],
-      [-c*(1/det), a*(1/det)]
-    ]
-  
-    return ['Valide', matrice]
-  }
-  
-console.log(inverse(1, 2, 3, 4)) // => [ 'Valide', [ [ -2, 1 ], [ 1.5, -0.5 ] ] ]
-console.log(inverse(1, 4, 0.5, 2)) // => [ 'Invalide', [] ]
+/*Opérateur conditionnel */
+let dict = [
+    [0, 9],
+    [19, 24],
+    [19, 39, [24, 19]]
+]
+let obj1 = dict[2] // [19, 39, [24, 19]]
+let obj2 = obj1[0] // 19
+let obj3 = obj2[2] // undefined
+let obj4 = obj3[1] // Renvoie une erreur :
+// Cannot read properties of undefined (reading '1')
 
-let matrice = [[1, 2], [3, 4]]
-console.log(inverse(...[...matrice[0], ...matrice[1]]))
+let obj4Fixed = obj3?.[1] // Grâce à l'oprateur 
+console.log(obj1)
+console.log(obj2)
+console.log(obj3)
+// console.log(obj4)
